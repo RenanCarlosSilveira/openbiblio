@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="controller.ConfiguracaoController">
+    <children>
+        <Pane maxHeight="512.0" maxWidth="1020.0" minHeight="512.0" minWidth="1020.0" prefHeight="512.0" prefWidth="1020.0" />
+        <GridPane layoutX="1.0" maxHeight="512.0" minHeight="512.0" prefHeight="512.0" prefWidth="1020.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Pane maxHeight="512.0" minHeight="512.0" prefHeight="512.0" prefWidth="306.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #ffab1a, #996900);" GridPane.halignment="CENTER" GridPane.rowSpan="6">
+                    <children>
+                        <ImageView fitHeight="203.0" fitWidth="247.0" layoutX="-1.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../util/ouro.png" />
+                            </image>
+                        </ImageView>
+                        <Text fill="#ffb200" layoutX="18.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BIBLIOURO">
+                            <font>
+                                <Font name="System Bold" size="31.0" />
+                            </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="14.0" layoutY="472.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Base da Biblioteca:">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Text>
+                        <Text fx:id="l_base" fill="WHITE" layoutX="14.0" layoutY="496.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="105.76171875">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="32.0" layoutY="298.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Administração de Software" textAlignment="CENTER" wrappingWidth="137.736328125">
+                            <font>
+                                <Font name="System Bold" size="20.0" />
+                            </font>
+                        </Text>
+                        <Button fx:id="b_back" layoutX="156.0" layoutY="468.0" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onMouseClicked="#closeview" prefHeight="30.0" prefWidth="30.0" style="-fx-background-image: util\configuracao.png;">
+                            <graphic>
+                                <ImageView fitHeight="38.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../util/volte.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </children>
+                    <padding>
+                        <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                    </padding>
+                    <GridPane.margin>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                    </GridPane.margin>
+                </Pane>
+            <CheckBox fx:id="c_escola" mnemonicParsing="false" onMouseClicked="#on_verificaescola" text="Base de Escola" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </GridPane.margin>
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+            <Text fill="RED" lineSpacing="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Utilizar esta opção apenas quando se tratar de bases de escola, trará a obrigatoriedade de matrícula no cadastro de pessoas" wrappingWidth="628.1025390625" GridPane.columnIndex="2" GridPane.rowIndex="3">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </GridPane.margin>
+            </Text>
+            <TextField fx:id="t_base" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </GridPane.margin>
+            </TextField>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nome da Unidade:" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </GridPane.margin>
+            </Text>
+            <Button fx:id="b_salvarbase" mnemonicParsing="false" onMouseClicked="#on_salvaunidade" text="Salvar/Atualizar" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </GridPane.margin>
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </Button>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Desenvolvido por Renan Carlos da Silveira em parceria com a Universidade do Oeste de Santa Catarina, campus de Joaçaba." wrappingWidth="807.4453125" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </GridPane.margin>
+            </Text>
+            </children>
+            <columnConstraints>
+                <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="204.0" minWidth="204.0" prefWidth="204.0" />
+                <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="204.0" minWidth="118.0" prefWidth="168.0" />
+                <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="290.0" minWidth="204.0" prefWidth="240.0" />
+                <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="204.0" minWidth="204.0" prefWidth="204.0" />
+                <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="204.0" minWidth="204.0" prefWidth="204.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="209.0" minHeight="31.0" prefHeight="84.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="225.0" minHeight="46.0" prefHeight="49.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="254.0" minHeight="42.0" prefHeight="54.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="337.0" minHeight="0.0" prefHeight="102.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="393.0" minHeight="128.0" prefHeight="233.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="393.0" minHeight="43.0" prefHeight="75.0" vgrow="SOMETIMES" />
+                <RowConstraints />
+                <RowConstraints />
+            </rowConstraints>
+        </GridPane>
+    </children> 
+</AnchorPane>

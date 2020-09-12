@@ -1,0 +1,17 @@
+FXML:
+
+Arquivo - Config.fxml
+Obs - Possui inserção manual de lista diretamente no código passível de uso em outras situações onde não há necessidade de população por banco
+Trecho - <items>
+<FXCollections fx:factory="observableArrayList">
+<String fx:value="Código de Barras" />
+<String fx:value="Nome Obra" />
+<String fx:value="Nome Autor" />
+</FXCollections>
+</items>
+
+JAVA:
+
+Arquivo - MainController
+Obs - Possui função para criação de joption para opções de admin personalizada, reutilizável.
+Trecho - private void on_config(MouseEvent event)
