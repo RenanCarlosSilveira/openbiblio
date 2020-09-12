@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller.view;
+package controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -23,7 +23,7 @@ import javax.swing.JOptionPane;
  *
  * @author renan
  */
-public class LocalController implements Initializable {
+public class AutorController implements Initializable {
 
     @FXML
     private Text l_base;
@@ -32,11 +32,11 @@ public class LocalController implements Initializable {
     @FXML
     private TextField t_consulta;
     @FXML
-    private Button b_busca;
-    @FXML
     private ComboBox<?> c_termoconsulta;
     @FXML
     private ListView<?> list_acervos;
+    @FXML
+    private Button b_busca;
 
     /**
      * Initializes the controller class.

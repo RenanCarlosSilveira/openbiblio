@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller.view;
+package controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -23,7 +23,7 @@ import javax.swing.JOptionPane;
  *
  * @author renan
  */
-public class ExemplarController implements Initializable {
+public class LocalController implements Initializable {
 
     @FXML
     private Text l_base;
