@@ -1,0 +1,81 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package controller;
+
+import util.HibernateJPAUtil;
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Path;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+import model.Unidade;
+
+/**
+ *
+ * @author Eduardo Comin <eduardo.comin@unoesc.edu.br>
+ * @since 2018/01
+ */
+public class ConfiguracaoDao {
+
+    private EntityManager manager = new HibernateJPAUtil().getEntityManager();
+
+    public EntityManager getManager() {
+        return manager;
+    }
+
+    public void salvar(Object objeto) {
+        try {
+            this.getManager().getTransaction().begin();
+            this.getManager().persist(objeto);
+            this.getManager().getTransaction().commit();
+            this.getManager().close();
+        } catch (Exception e) {
+            System.out.println("Nao foi possivel inserir: " + e);
+        }
+    }
+
+    public void remover(Object objeto) {
+        try {
+            this.getManager().getTransaction().begin();
+            this.getManager().remove(objeto);
+            this.getManager().getTransaction().commit();
+            this.getManager().close();
+        } catch (Exception e) {
+            System.out.println("Nao foi possivel remover: " + e);
+        }
+    }
+
+    public Unidade getNomeUnidade(int idUnidade) {
+        CriteriaBuilder builder = this.getManager().getCriteriaBuilder();
+        CriteriaQuery<Unidade> query = builder.createQuery(Unidade.class);
+        Root<Unidade> root = query.from(Unidade.class);
+        try {
+            Path<String> nomePath = root.<String>get("idUnidade");
+            Predicate nomeIgual = builder.equal(nomePath, idUnidade);
+            query.where(nomeIgual);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        TypedQuery<Unidade> typedQuery = this.getManager().createQuery(query);
+        return typedQuery.getSingleResult();
+    }
+
+/////////////////////////////////////// DOENCA ///////////////////////////////////////////////////////////////////////    
+    /*public void incluirTipoAcervo(TipoAcervo doen) {
+        try {
+            EntityManager em = new HibernateJPAUtil().getEntityManager();
+            em.getTransaction().begin();
+            em.persist(doen);
+            em.getTransaction().commit();
+            em.close();
+            JOptionPane.showMessageDialog(null, "Inserido!");
+        } catch (Exception e) {
+            System.out.println("Nao foi possivel inserir: " + e);
+        }
+    }*/
+}

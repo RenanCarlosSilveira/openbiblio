@@ -29,6 +29,7 @@ import javafx.util.Duration;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
+import model.Unidade;
 
 /**
  *
@@ -67,7 +68,7 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        busca_unidade();
     }
 
     @FXML
@@ -163,24 +164,31 @@ public class MainController implements Initializable {
 
     @FXML
     private void on_config(MouseEvent event) throws IOException {
-        JLabel label = new JLabel("Digite a senha:");
-        JPasswordField jpf = new JPasswordField();
-        JOptionPane.showConfirmDialog(null, new Object[]{label, jpf}, "Password:", JOptionPane.OK_CANCEL_OPTION);
-        String m = new String(jpf.getPassword());
-        if (m.equals("ouro#960523")) {
-            Stage stage = new Stage();
-            Parent myNewScene = null;
-            //stage = New (Stage) objetodatela.getScene().getWindow(); PARA ABRIR EM MESMA TELA
-            myNewScene = FXMLLoader.load(getClass().getResource("/view/Configuracao.fxml"));
-            Scene scene = new Scene(myNewScene);
-            stage.setScene(scene);
-            stage.setTitle("Configurações Administrativas");
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.show();
-        } else {
-            System.out.println(m);
-            JOptionPane.showMessageDialog(null, "Senha de administrador incorreta!", "", JOptionPane.INFORMATION_MESSAGE);
-        }
+        //JLabel label = new JLabel("Digite a senha:");
+        //JPasswordField jpf = new JPasswordField();
+        //JOptionPane.showConfirmDialog(null, new Object[]{label, jpf}, "Password:", JOptionPane.OK_CANCEL_OPTION);
+        //String m = new String(jpf.getPassword());
+        //if (m.equals("ouro#960523")) {
+        Stage stage = new Stage();
+        Parent myNewScene = null;
+        //stage = New (Stage) objetodatela.getScene().getWindow(); PARA ABRIR EM MESMA TELA
+        myNewScene = FXMLLoader.load(getClass().getResource("/view/Configuracao.fxml"));
+        Scene scene = new Scene(myNewScene);
+        stage.setScene(scene);
+        stage.setTitle("Configurações Administrativas");
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.show();
+        //} else {
+        // System.out.println(m);
+        //JOptionPane.showMessageDialog(null, "Senha de administrador incorreta!", "", JOptionPane.INFORMATION_MESSAGE);
+        //}
+    }
+
+    void busca_unidade() {
+        Unidade unidade = new Unidade();
+        ConfiguracaoDao dao = new ConfiguracaoDao();
+        unidade = dao.getNomeUnidade(1);
+        l_base.setText(unidade.getNomeUnidade());
     }
 
     @FXML

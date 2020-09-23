@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.collections.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="controller.ConfiguracaoController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ConfiguracaoController">
     <children>
         <Pane maxHeight="512.0" maxWidth="1020.0" minHeight="512.0" minWidth="1020.0" prefHeight="512.0" prefWidth="1020.0" />
         <GridPane layoutX="1.0" maxHeight="512.0" minHeight="512.0" prefHeight="512.0" prefWidth="1020.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
@@ -95,7 +95,7 @@
                   <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                </GridPane.margin>
             </Text>
-            <Button fx:id="b_salvarbase" mnemonicParsing="false" onMouseClicked="#on_salvaunidade" text="Salvar/Atualizar" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Button fx:id="b_salvarbase" mnemonicParsing="false" onAction="#on_salvaunidade" onMouseClicked="#on_salvaunidade" text="Salvar/Atualizar" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
@@ -113,6 +113,21 @@
                <GridPane.margin>
                   <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                </GridPane.margin>
+            </Text>
+            <Button fx:id="b_salvar" contentDisplay="CENTER" mnemonicParsing="false" onAction="#on_salvartipo" text="Salvar/Alterar" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <TextField fx:id="t_nometipo" prefHeight="25.0" prefWidth="261.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo de Acervo:" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <font>
+                  <Font size="18.0" />
+               </font>
             </Text>
             </children>
             <columnConstraints>

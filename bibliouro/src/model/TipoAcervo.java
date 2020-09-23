@@ -5,10 +5,50 @@
  */
 package model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  *
  * @author renan
  */
+@Entity
+@Table(name = "TipoAcervo")
 public class TipoAcervo {
-    
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "idTipoAcervo")
+    private int idTipoAcervo;
+    @Column(name = "nomeAcervo")
+    private String nome;
+
+    public TipoAcervo(int idTipoAcervo, String nome) {
+        this.idTipoAcervo = idTipoAcervo;
+        this.nome = nome;
+    }
+
+    public TipoAcervo() {
+    }
+
+    public int getIdTipoAcervo() {
+        return idTipoAcervo;
+    }
+
+    public void setIdTipoAcervo(int idTipoAcervo) {
+        this.idTipoAcervo = idTipoAcervo;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
 }

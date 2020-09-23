@@ -5,16 +5,8 @@
     <!-- Implementação do JPA, no nosso caso Hibernate -->
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     <!-- Aqui são listadas todas as entidades -->
-    <class>model.Acervo</class>
-    <class>model.Emprestimo</class>
-    <class>model.Estante</class>
-    <class>model.Exemplar</class>
-    <class>model.Gestor</class>
-    <class>model.Pessoa</class>
-    <class>model.Prateleira</class>
     <class>model.TipoAcervo</class>
     <class>model.Unidade</class>
-
     <properties>
       <!-- Propriedades JDBC -->
       <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
