@@ -187,8 +187,13 @@ public class MainController implements Initializable {
     void busca_unidade() {
         Unidade unidade = new Unidade();
         ConfiguracaoDao dao = new ConfiguracaoDao();
-        unidade = dao.getNomeUnidade(1);
-        l_base.setText(unidade.getNomeUnidade());
+        unidade = dao.getNomeUnidade();
+        try{
+            l_base.setText(unidade.getNomeUnidade());
+        }catch(Exception e){
+            l_base.setText("NÃO DEFINIDO!");
+            System.out.println(e);
+        }
     }
 
     @FXML

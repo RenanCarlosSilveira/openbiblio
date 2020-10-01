@@ -95,17 +95,6 @@
                   <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                </GridPane.margin>
             </Text>
-            <Button fx:id="b_salvarbase" mnemonicParsing="false" onAction="#on_salvaunidade" onMouseClicked="#on_salvaunidade" text="Salvar/Atualizar" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-               </GridPane.margin>
-               <padding>
-                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-               </padding>
-            </Button>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Desenvolvido por Renan Carlos da Silveira em parceria com a Universidade do Oeste de Santa Catarina, campus de Joaçaba." wrappingWidth="807.4453125" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <font>
                   <Font name="System Bold" size="18.0" />
@@ -129,6 +118,14 @@
                   <Font size="18.0" />
                </font>
             </Text>
+            <Button fx:id="b_salvarunidade" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#on_salvarunidade" text="Salvar/Alterar" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </GridPane.margin>
+            </Button>
             </children>
             <columnConstraints>
                 <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="204.0" minWidth="204.0" prefWidth="204.0" />

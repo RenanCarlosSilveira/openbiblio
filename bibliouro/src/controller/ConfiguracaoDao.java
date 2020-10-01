@@ -7,6 +7,7 @@ package controller;
 
 import util.HibernateJPAUtil;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -50,23 +51,24 @@ public class ConfiguracaoDao {
         }
     }
 
-    public Unidade getNomeUnidade(int idUnidade) {
+    public Unidade getNomeUnidade() {
         CriteriaBuilder builder = this.getManager().getCriteriaBuilder();
         CriteriaQuery<Unidade> query = builder.createQuery(Unidade.class);
         Root<Unidade> root = query.from(Unidade.class);
         try {
             Path<String> nomePath = root.<String>get("idUnidade");
-            Predicate nomeIgual = builder.equal(nomePath, idUnidade);
+            Predicate nomeIgual = builder.isNotNull(nomePath);
             query.where(nomeIgual);
-        } catch (Exception e) {
+            TypedQuery<Unidade> typedQuery = this.getManager().createQuery(query);
+            return typedQuery.getSingleResult();
+        } catch (NoResultException e) {
             System.out.println(e);
+            return null;
         }
-        TypedQuery<Unidade> typedQuery = this.getManager().createQuery(query);
-        return typedQuery.getSingleResult();
     }
 
 /////////////////////////////////////// DOENCA ///////////////////////////////////////////////////////////////////////    
-    /*public void incluirTipoAcervo(TipoAcervo doen) {
+/*public void incluirTipoAcervo(TipoAcervo doen) {
         try {
             EntityManager em = new HibernateJPAUtil().getEntityManager();
             em.getTransaction().begin();

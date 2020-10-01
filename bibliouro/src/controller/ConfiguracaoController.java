@@ -31,26 +31,21 @@ public class ConfiguracaoController implements Initializable {
     @FXML
     private Button b_back;
     @FXML
-    private CheckBox c_escola;
-    @FXML
     private TextField t_base;
-    @FXML
-    private Button b_salvarbase;
     @FXML
     private Button b_salvar;
     @FXML
     private TextField t_nometipo;
+    @FXML
+    private CheckBox c_escola;
+    @FXML
+    private Button b_salvarunidade;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        busca_unidade();
-    }
-    
-    public void initialize(URL url, ResourceBundle rb, String nomeUnidade) {
-        String nomeunidade;
         busca_unidade();
     }
 
@@ -61,15 +56,7 @@ public class ConfiguracaoController implements Initializable {
     }
 
     @FXML
-    private void on_verificaescola(MouseEvent event) {
-    }
-
-    @FXML
-    private void on_salvaunidade(MouseEvent event) {
-    }
-
-
-    public void salva_tipo() {
+    private void on_salvartipo(ActionEvent event) {
         ConfiguracaoDao dao = new ConfiguracaoDao();
         TipoAcervo tipo = new TipoAcervo();
         tipo.setNome(t_nometipo.getText());
@@ -77,15 +64,33 @@ public class ConfiguracaoController implements Initializable {
         System.out.println("Salvo!");
     }
 
-    @FXML
-    private void on_salvartipo(ActionEvent event) {
-        salva_tipo();
-    }
-    
-    void busca_unidade(){
+    void busca_unidade() {
         Unidade unidade = new Unidade();
         ConfiguracaoDao dao = new ConfiguracaoDao();
-        unidade = dao.getNomeUnidade(1);
-        l_base.setText(unidade.getNomeUnidade());
+        unidade = dao.getNomeUnidade();
+        try {
+            l_base.setText(unidade.getNomeUnidade());
+            t_base.setText(unidade.getNomeUnidade());
+            t_base.setDisable(true);
+        } catch (Exception e) {
+            t_base.setText("");
+            t_base.setDisable(false);
+            l_base.setText("NÃO DEFINIDO!");
+            System.out.println(e);
         }
     }
+
+    @FXML
+    private void on_verificaescola(MouseEvent event) {
+    }
+
+    @FXML
+    private void on_salvarunidade(ActionEvent event) {
+        ConfiguracaoDao dao = new ConfiguracaoDao();
+        Unidade unidade = new Unidade();
+        unidade.setNomeUnidade(t_base.getText());
+        dao.salvar(unidade);
+        System.out.println("Salvo!");
+    }
+
+}

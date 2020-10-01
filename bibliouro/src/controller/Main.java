@@ -28,7 +28,7 @@ public class Main extends Application {
         FXMLLoader spinnerSceneLoader = new FXMLLoader(getClass().getResource("/view/Main.fxml"));
         Parent root = (Parent) spinnerSceneLoader.load();
         
-        MainController ctrlrPointer = (MainController) spinnerSceneLoader.getController();
+        //MainController ctrlrPointer = (MainController) spinnerSceneLoader.getController();
         
         
         Scene scene = new Scene(root);
