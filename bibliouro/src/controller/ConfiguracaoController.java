@@ -16,6 +16,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
+import model.Estante;
 import model.TipoAcervo;
 import model.Unidade;
 
@@ -44,8 +46,16 @@ public class ConfiguracaoController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    Unidade unidade = new Unidade();
+    ConfiguracaoDao dao = new ConfiguracaoDao();
+    @FXML
+    private TextField t_estante;
+    @FXML
+    private Button b_salvarestante;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        unidade = dao.getNomeUnidade();
         busca_unidade();
     }
 
@@ -57,21 +67,59 @@ public class ConfiguracaoController implements Initializable {
 
     @FXML
     private void on_salvartipo(ActionEvent event) {
-        ConfiguracaoDao dao = new ConfiguracaoDao();
-        TipoAcervo tipo = new TipoAcervo();
-        tipo.setNome(t_nometipo.getText());
-        dao.salvar(tipo);
-        System.out.println("Salvo!");
+        if (!t_nometipo.getText().equals("")) {
+            ConfiguracaoDao dao = new ConfiguracaoDao();
+            TipoAcervo tipo = new TipoAcervo();
+            tipo.setNome(t_nometipo.getText());
+            dao.salvar(tipo);
+            System.out.println("Salvo!");
+            t_nometipo.setText("");
+        } else {
+            JOptionPane.showMessageDialog(null, "Favor preencher as informações!", "Bibliouro", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
+    @FXML
+    private void on_salvarestante(ActionEvent event) {
+        if (!t_estante.getText().equals("")) {
+            ConfiguracaoDao dao = new ConfiguracaoDao();
+            Estante estante = new Estante();
+            estante.setCodigoEstante(t_estante.getText());
+            dao.salvar(estante);
+            System.out.println("Salvo!");
+            t_estante.setText("");
+        } else {
+            JOptionPane.showMessageDialog(null, "Favor preencher as informações!", "Bibliouro", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
+    @FXML
+    private void on_salvarunidade(ActionEvent event) {
+        if (!t_base.getText().equals("")) {
+            ConfiguracaoDao dao = new ConfiguracaoDao();
+            Unidade unidade = new Unidade();
+            unidade.setNomeUnidade(t_base.getText());
+            dao.salvar(unidade);
+            System.out.println("Salvo!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Favor preencher as informações!", "Bibliouro", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
 
     void busca_unidade() {
-        Unidade unidade = new Unidade();
-        ConfiguracaoDao dao = new ConfiguracaoDao();
-        unidade = dao.getNomeUnidade();
         try {
             l_base.setText(unidade.getNomeUnidade());
             t_base.setText(unidade.getNomeUnidade());
             t_base.setDisable(true);
+            if (unidade.getEscola() == 1) {
+                System.out.println(unidade.getEscola());
+                System.out.println("É escola");
+                c_escola.setSelected(true);
+            }
+            if (unidade.getEscola() != 1) {
+                System.out.println("NÃO é escola");
+                c_escola.setSelected(false);
+            }
         } catch (Exception e) {
             t_base.setText("");
             t_base.setDisable(false);
@@ -82,15 +130,14 @@ public class ConfiguracaoController implements Initializable {
 
     @FXML
     private void on_verificaescola(MouseEvent event) {
-    }
-
-    @FXML
-    private void on_salvarunidade(ActionEvent event) {
-        ConfiguracaoDao dao = new ConfiguracaoDao();
-        Unidade unidade = new Unidade();
-        unidade.setNomeUnidade(t_base.getText());
+        if (c_escola.isSelected()) {
+            unidade.setEscola(1);
+            c_escola.setDisable(true);
+        }
+        if (!c_escola.isSelected()) {
+            unidade.setEscola(0);
+            c_escola.setDisable(true);
+        }
         dao.salvar(unidade);
-        System.out.println("Salvo!");
     }
-
 }

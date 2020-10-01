@@ -27,12 +27,12 @@ public class Unidade {
     @Column(name = "nomeUnidade")
     private String nomeUnidade;
     @Column(name = "escola")
-    private char escola;
+    private int escola;
 
     public Unidade() {
     }
 
-    public Unidade(int idUnidade, String nomeUnidade, char escola) {
+    public Unidade(int idUnidade, String nomeUnidade, int escola) {
         this.idUnidade = idUnidade;
         this.nomeUnidade = nomeUnidade;
         this.escola = escola;
@@ -54,11 +54,11 @@ public class Unidade {
         this.nomeUnidade = nomeUnidade;
     }
 
-    public char getEscola() {
+    public int getEscola() {
         return escola;
     }
 
-    public void setEscola(char escola) {
+    public void setEscola(int escola) {
         this.escola = escola;
     }
 
