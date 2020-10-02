@@ -7,6 +7,8 @@ package controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -40,8 +42,6 @@ public class PessoaController implements Initializable {
     @FXML
     private ComboBox<?> c_termoconsulta;
     @FXML
-    private ListView<?> list_acervos;
-    @FXML
     private ImageView b_add;
     @FXML
     private ImageView b_rmv;
@@ -69,6 +69,8 @@ public class PessoaController implements Initializable {
     private TextField t_id;
     @FXML
     private Text l_matricula;
+    @FXML
+    private ListView<Pessoa> list_pessoas;
 
     /**
      * Initializes the controller class.
@@ -79,29 +81,56 @@ public class PessoaController implements Initializable {
     }
 
     @FXML
-    private void closeview(MouseEvent event) {
+    private void on_buscarpessoa(MouseEvent event) {
+        if (!t_consulta.getText().equals("") || !t_consulta.getText().equals(null)) {
+            if (c_termoconsulta.getSelectionModel().getSelectedIndex() == 0) {
+                System.out.println("selecionou por nome");
+                ObservableList<Pessoa> pessoas = FXCollections.observableArrayList();
+                PessoaDao dao = new PessoaDao();
+                for (Pessoa c : dao.getPessoasNome(t_consulta.getText())) {
+                    pessoas.add(c);
+                    System.out.println(pessoas);
+                    list_pessoas.setItems(pessoas);
+                }
+            }
+            if (c_termoconsulta.getSelectionModel().getSelectedIndex() == 1) {
+                System.out.println("selecionou por cpf");
+                ObservableList<Pessoa> pessoas = FXCollections.observableArrayList();
+                PessoaDao dao = new PessoaDao();
+                for (Pessoa c : dao.getPessoasCpf(Integer.valueOf(t_consulta.getText()))) {
+                    pessoas.add(c);
+                    System.out.println(pessoas);
+                    list_pessoas.setItems(pessoas);
+                }
+
+            } else if (c_termoconsulta.getSelectionModel().getSelectedIndex() == 0
+                    && c_termoconsulta.getSelectionModel().getSelectedIndex() == 1) {
+                JOptionPane.showMessageDialog(null, "Selecione o filtro!", "", JOptionPane.INFORMATION_MESSAGE);
+            }
+            System.out.println(c_termoconsulta.getSelectionModel().getSelectedIndex());
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Digite o termo de Pesquisa!", "", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+        t_consulta.setText("");
+    }
+
+    /*ObservableList<Word> wordsList = FXCollections.observableArrayList();
+wordsList.add(new Word("First Word", "Definition of First Word");
+wordsList.add(new Word("Second Word", "Definition of Second Word");
+wordsList.add(new Word("Third Word", "Definition of Third Word");
+ListView<Word> listViewOfWords = new ListView<>(wordsList);*/
+    @FXML
+    private void closeview(MouseEvent event
+    ) {
         Stage stage = (Stage) b_back.getScene().getWindow();
         stage.close();
     }
 
     @FXML
-    private void on_buscar(MouseEvent event) {
-        if (!t_consulta.getText().equals("")) {
-            if (c_termoconsulta.getSelectionModel().getSelectedIndex() == 0) {
-                System.out.println("selecionou por nome");
-            }
-            if (c_termoconsulta.getSelectionModel().getSelectedIndex() == 1) {
-                System.out.println("selecionou por cpf");
-            } else {
-                JOptionPane.showMessageDialog(null, "Selecione o filtro!", "", JOptionPane.INFORMATION_MESSAGE);
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Digite o termo de Pesquisa!", "", JOptionPane.INFORMATION_MESSAGE);
-        }
-    }
-
-    @FXML
-    private void on_salvar(MouseEvent event) {
+    private void on_salvar(MouseEvent event
+    ) {
         if ((t_nome.getText().equals(null) || t_cpf.getText().equals(null)) || (t_nome.getText().equals("") || t_cpf.getText().equals(""))) {
             JOptionPane.showMessageDialog(null, "Preencha as informações obrigatorias (nome e cpf)", "", JOptionPane.INFORMATION_MESSAGE);
         } else {
@@ -149,12 +178,14 @@ public class PessoaController implements Initializable {
     }
 
     @FXML
-    private void on_remover(MouseEvent event) {
+    private void on_remover(MouseEvent event
+    ) {
         System.out.println("RMV");
     }
 
     @FXML
-    private void on_add(MouseEvent event) {
+    private void on_add(MouseEvent event
+    ) {
         System.out.println("ADD");
         busca_unidade();
         t_nome.setEditable(true);

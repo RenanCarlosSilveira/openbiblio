@@ -15,6 +15,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import model.Pessoa;
 import model.Unidade;
 
 /**
@@ -52,15 +53,15 @@ public class PessoaDao {
         }
     }
 
-    public List<Unidade> getPessoas(String nome) {
+    public List<Pessoa> getPessoasNome(String nome) {
         CriteriaBuilder builder = this.getManager().getCriteriaBuilder();
-        CriteriaQuery<Unidade> query = builder.createQuery(Unidade.class);
-        Root<Unidade> root = query.from(Unidade.class);
+        CriteriaQuery<Pessoa> query = builder.createQuery(Pessoa.class);
+        Root<Pessoa> root = query.from(Pessoa.class);
         try {
             Path<String> nomePath = root.<String>get("nome");
-            Predicate nomeIgual = builder.like(nomePath, nome);
+            Predicate nomeIgual = builder.like(nomePath, "%" + nome + "%");
             query.where(nomeIgual);
-            TypedQuery<Unidade> typedQuery = this.getManager().createQuery(query);
+            TypedQuery<Pessoa> typedQuery = this.getManager().createQuery(query);
             return typedQuery.getResultList();
         } catch (NoResultException e) {
             System.out.println(e);
@@ -68,6 +69,21 @@ public class PessoaDao {
         }
     }
 
+    public List<Pessoa> getPessoasCpf(int cpf) {
+        CriteriaBuilder builder = this.getManager().getCriteriaBuilder();
+        CriteriaQuery<Pessoa> query = builder.createQuery(Pessoa.class);
+        Root<Pessoa> root = query.from(Pessoa.class);
+        try {
+            Path<String> nomePath = root.<String>get("cpf");
+            Predicate nomeIgual = builder.like(nomePath, String.valueOf(cpf));
+            query.where(nomeIgual);
+            TypedQuery<Pessoa> typedQuery = this.getManager().createQuery(query);
+            return typedQuery.getResultList();
+        } catch (NoResultException e) {
+            System.out.println(e);
+            return null;
+        }
+    }
 /////////////////////////////////////// DOENCA ///////////////////////////////////////////////////////////////////////    
 /*public void incluirTipoAcervo(TipoAcervo doen) {
         try {

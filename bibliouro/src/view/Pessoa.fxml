@@ -258,7 +258,7 @@
                                             </font>
                                         </Text>
                                         <TextField fx:id="t_consulta" layoutX="73.0" layoutY="25.0" prefHeight="25.0" prefWidth="525.0" />
-                                        <Button fx:id="b_busca" layoutX="769.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#on_buscar" text="&gt;&gt;" />
+                                        <Button fx:id="b_busca" layoutX="769.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#on_buscarpessoa" text="&gt;&gt;" />
                                         <ComboBox fx:id="c_termoconsulta" layoutX="609.0" layoutY="25.0" prefWidth="150.0">
                                             <items>
                                                 <FXCollections fx:factory="observableArrayList">
@@ -269,7 +269,7 @@
                                         </ComboBox>
                                         <ScrollPane layoutX="14.0" layoutY="60.0" prefHeight="406.0" prefWidth="789.0">
                                             <content>
-                                                <ListView fx:id="list_acervos" prefHeight="390.0" prefWidth="787.0" />
+                                                <ListView fx:id="list_pessoas" prefHeight="390.0" prefWidth="787.0" />
                                             </content>
                                         </ScrollPane>
                                     </children>
