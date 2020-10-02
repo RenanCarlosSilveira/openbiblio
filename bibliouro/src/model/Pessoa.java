@@ -40,13 +40,13 @@ public class Pessoa {
     @Column(name = "bairro")
     private String bairro;
     @Column(name = "numero")
-    private int numero;
+    private String numero;
     @Column(name = "matricula")
     private int matricula;
     @Column(name = "status")
     private int status; //0 = ativo 1 = devolucao pendente 2 = bloqueado
 
-    public Pessoa(int idPessoa, String nome, Date nascimento, int telefone, String email, int cpf, String rua, String bairro, int numero, int matricula, int status) {
+    public Pessoa(int idPessoa, String nome, Date nascimento, int telefone, String email, int cpf, String rua, String bairro, String numero, int matricula, int status) {
         this.idPessoa = idPessoa;
         this.nome = nome;
         this.nascimento = nascimento;
@@ -58,6 +58,9 @@ public class Pessoa {
         this.numero = numero;
         this.matricula = matricula;
         this.status = status;
+    }
+
+    public Pessoa() {
     }
 
     public int getIdPessoa() {
@@ -124,11 +127,11 @@ public class Pessoa {
         this.bairro = bairro;
     }
 
-    public int getNumero() {
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
 

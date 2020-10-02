@@ -173,7 +173,7 @@
                                           <Font size="18.0" />
                                        </font>
                                     </TextField>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Matrícula:" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                                    <Text fx:id="l_matricula" strokeType="OUTSIDE" strokeWidth="0.0" text="Matrícula:" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="3">
                                        <GridPane.margin>
                                           <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                                        </GridPane.margin>
@@ -181,7 +181,7 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Text>
-                                    <TextField fx:id="t_matricula" editable="false" onMouseClicked="#on_verificaescola" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="3">
+                                    <TextField fx:id="t_matricula" editable="false" visible="false" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="3">
                                        <GridPane.margin>
                                           <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                                        </GridPane.margin>

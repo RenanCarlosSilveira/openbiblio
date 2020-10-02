@@ -19,6 +19,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
+import model.Pessoa;
 import model.Unidade;
 
 /**
@@ -66,6 +67,8 @@ public class PessoaController implements Initializable {
     private TextField t_numero;
     @FXML
     private TextField t_id;
+    @FXML
+    private Text l_matricula;
 
     /**
      * Initializes the controller class.
@@ -99,20 +102,49 @@ public class PessoaController implements Initializable {
 
     @FXML
     private void on_salvar(MouseEvent event) {
-        System.out.println("SAVE");
-        System.out.println("ADD");
-        t_matricula.setEditable(false);
-        t_nome.setEditable(false);
-        t_nascimento.setEditable(false);
-        t_cpf.setEditable(false);
-        t_email.setEditable(false);
-        t_telefone.setEditable(false);
-        t_bairro.setEditable(false);
-        t_rua.setEditable(false);
-        t_numero.setEditable(false);
-        b_rmv.setVisible(false);
-        b_add.setVisible(true);
-        b_save.setVisible(false);
+        if ((t_nome.getText().equals(null) || t_cpf.getText().equals(null)) || (t_nome.getText().equals("") || t_cpf.getText().equals(""))) {
+            JOptionPane.showMessageDialog(null, "Preencha as informações obrigatorias (nome e cpf)", "", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            PessoaDao dao = new PessoaDao();
+            Pessoa pessoa = new Pessoa();
+            pessoa.setNome(t_nome.getText());
+            pessoa.setCpf(Integer.valueOf(t_cpf.getText()));
+            pessoa.setNome(t_nome.getText());
+            pessoa.setEmail(t_email.getText());
+            pessoa.setTelefone(Integer.valueOf(t_telefone.getText()));
+            //pessoa.setNascimento(t_nascimento.());
+            pessoa.setRua(t_rua.getText());
+            pessoa.setBairro(t_bairro.getText());
+            pessoa.setNumero(t_numero.getText());
+            if (!t_matricula.getText().equals("")) {
+                pessoa.setMatricula(Integer.valueOf(t_matricula.getText()));
+            }
+            dao.salvar(pessoa);
+            System.out.println("SAVE");
+
+            t_matricula.setText("");
+            t_nome.setText("");
+            //t_nascimento.("");
+            t_cpf.setText("");
+            t_email.setText("");
+            t_telefone.setText("");
+            t_bairro.setText("");
+            t_rua.setText("");
+            t_numero.setText("");
+
+            t_matricula.setEditable(false);
+            t_nome.setEditable(false);
+            t_nascimento.setEditable(false);
+            t_cpf.setEditable(false);
+            t_email.setEditable(false);
+            t_telefone.setEditable(false);
+            t_bairro.setEditable(false);
+            t_rua.setEditable(false);
+            t_numero.setEditable(false);
+            b_rmv.setVisible(false);
+            b_add.setVisible(true);
+            b_save.setVisible(false);
+        }
 
     }
 
@@ -138,13 +170,6 @@ public class PessoaController implements Initializable {
         b_add.setVisible(false);
     }
 
-    @FXML
-    private void on_verificaescola(MouseEvent event) {
-        if(!t_matricula.isEditable() && t_nome.isEditable()){
-            JOptionPane.showMessageDialog(null, "A opção matrícula está disponível apenas para escolas", "", JOptionPane.INFORMATION_MESSAGE);
-        }
-    }
-    
     void busca_unidade() {
         Unidade unidade = new Unidade();
         ConfiguracaoDao dao = new ConfiguracaoDao();
@@ -153,11 +178,15 @@ public class PessoaController implements Initializable {
             if (unidade.getEscola() == 1) {
                 System.out.println(unidade.getEscola());
                 System.out.println("É escola");
+                t_matricula.setVisible(true);
                 t_matricula.setEditable(true);
+                l_matricula.setVisible(true);
             }
             if (unidade.getEscola() != 1) {
                 System.out.println("NÃO é escola");
+                t_matricula.setVisible(false);
                 t_matricula.setEditable(false);
+                l_matricula.setVisible(false);
             }
         } catch (Exception e) {
             System.out.println(e);
