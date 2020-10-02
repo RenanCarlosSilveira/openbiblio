@@ -5,10 +5,28 @@
  */
 package model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  *
  * @author renan
  */
+@Entity
+@Table(name = "Pessoa")
 public class Pessoa {
-    
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "idPessoa")
+    private int idUnidade;
+    @Column(name = "nomeUnidade")
+    private String nomeUnidade;
+    @Column(name = "escola")
+    private int escola;
+
 }
