@@ -11,8 +11,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -37,6 +39,32 @@ public class PessoaController implements Initializable {
     private ComboBox<?> c_termoconsulta;
     @FXML
     private ListView<?> list_acervos;
+    @FXML
+    private ImageView b_add;
+    @FXML
+    private ImageView b_rmv;
+    @FXML
+    private ImageView b_save;
+    @FXML
+    private TextField t_nome;
+    @FXML
+    private DatePicker t_nascimento;
+    @FXML
+    private TextField t_telefone;
+    @FXML
+    private TextField t_email;
+    @FXML
+    private TextField t_cpf;
+    @FXML
+    private TextField t_matricula;
+    @FXML
+    private TextField t_rua;
+    @FXML
+    private TextField t_bairro;
+    @FXML
+    private TextField t_numero;
+    @FXML
+    private TextField t_id;
 
     /**
      * Initializes the controller class.
@@ -67,6 +95,45 @@ public class PessoaController implements Initializable {
         } else {
             JOptionPane.showMessageDialog(null, "Digite o termo de Pesquisa!", "", JOptionPane.INFORMATION_MESSAGE);
         }
+    }
+
+    @FXML
+    private void on_salvar(MouseEvent event) {
+        System.out.println("SAVE");
+        System.out.println("ADD");
+        t_nome.setEditable(false);
+        t_nascimento.setEditable(false);       
+        t_cpf.setEditable(false);
+        t_email.setEditable(false);
+        t_telefone.setEditable(false);
+        t_bairro.setEditable(false);
+        t_rua.setEditable(false);
+        t_numero.setEditable(false);
+        b_rmv.setVisible(false);
+        b_add.setVisible(true);
+        b_save.setVisible(false);
+        
+    }
+
+    @FXML
+    private void on_remover(MouseEvent event) {
+        System.out.println("RMV");
+    }
+    
+    @FXML
+    private void on_add(MouseEvent event) {
+        System.out.println("ADD");
+        t_nome.setEditable(true);
+        t_nascimento.setEditable(true);       
+        t_cpf.setEditable(true);
+        t_email.setEditable(true);
+        t_telefone.setEditable(true);
+        t_bairro.setEditable(true);
+        t_rua.setEditable(true);
+        t_numero.setEditable(true);
+        b_rmv.setVisible(false);
+        b_save.setVisible(true);
+        b_add.setVisible(false);
     }
 
 }
