@@ -56,17 +56,14 @@ public class PessoaController implements Initializable {
     private void on_buscar(MouseEvent event) {
         if (!t_consulta.getText().equals("")) {
             if (c_termoconsulta.getSelectionModel().getSelectedIndex() == 0) {
-                System.out.println("selecionou por barras");
+                System.out.println("selecionou por nome");
             }
             if (c_termoconsulta.getSelectionModel().getSelectedIndex() == 1) {
-                System.out.println("selecionou por obra");
+                System.out.println("selecionou por cpf");
             }
-            if (c_termoconsulta.getSelectionModel().getSelectedIndex() == 2) {
-                System.out.println("selecionou por autor");
+            else{
+                JOptionPane.showMessageDialog(null, "Selecione o filtro!", "", JOptionPane.INFORMATION_MESSAGE);
             }
-            /*if (c_termoconsulta.getSelectionModel().getSelectedIndex()){
-            JOptionPane.showMessageDialog(null, "Selecione o termo de Pesquisa!", "", JOptionPane.INFORMATION_MESSAGE);
-        }*/
         } else {
             JOptionPane.showMessageDialog(null, "Digite o termo de Pesquisa!", "", JOptionPane.INFORMATION_MESSAGE);
         }

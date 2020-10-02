@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.collections.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="controller.PessoaController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PessoaController">
     <children>
         <Pane maxHeight="512.0" maxWidth="1020.0" minHeight="512.0" minWidth="1020.0" prefHeight="512.0" prefWidth="1020.0" />
         <GridPane layoutX="10.0" layoutY="10.0" maxHeight="512.0" minHeight="512.0" prefHeight="512.0" prefWidth="1020.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -26,11 +26,6 @@
                         <Text fill="#ffb200" layoutX="18.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BIBLIOURO">
                             <font>
                                 <Font name="System Bold" size="31.0" />
-                            </font>
-                        </Text>
-                        <Text fill="WHITE" layoutX="14.0" layoutY="472.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Base da Biblioteca:">
-                            <font>
-                                <Font name="System Bold" size="12.0" />
                             </font>
                         </Text>
                         <Text fx:id="l_base" fill="WHITE" layoutX="14.0" layoutY="496.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="105.76171875">
@@ -64,7 +59,24 @@
                     <tabs>
                         <Tab style="-fx-font: 20px Tahoma;" text="Cadastro">
                             <content>
-                                <AnchorPane maxWidth="953.0" minHeight="0.0" minWidth="408.0" prefHeight="481.0" prefWidth="953.0" />
+                                <AnchorPane maxWidth="953.0" minHeight="0.0" minWidth="408.0" prefHeight="481.0" prefWidth="953.0">
+                           <children>
+                              <ImageView fx:id="b_add" fitHeight="50.0" fitWidth="50.0" layoutX="602.0" layoutY="366.0" onMouseClicked="#on_salvar" pickOnBounds="true" preserveRatio="true" x="50.0" y="50.0">
+                                 <image>
+                                    <Image url="@../util/add.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="b_rmv" fitHeight="50.0" fitWidth="50.0" layoutX="702.0" layoutY="366.0" onMouseClicked="#on_remover" pickOnBounds="true" preserveRatio="true" smooth="false" x="50.0" y="50.0">
+                                 <image>
+                                    <Image url="@../util/rmv.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="b_save" fitHeight="50.0" fitWidth="50.0" layoutX="652.0" layoutY="366.0" onMouseClicked="#on_salvar" pickOnBounds="true" preserveRatio="true" smooth="false" x="50.0" y="50.0">
+                                 <image>
+                                    <Image url="@../util/save.png" />
+                                 </image>
+                              </ImageView>
+                           </children></AnchorPane>
                             </content>
                         </Tab>
                         <Tab style="-fx-font: 20px Tahoma;" text="Consulta">
@@ -81,9 +93,8 @@
                                         <ComboBox fx:id="c_termoconsulta" layoutX="609.0" layoutY="25.0" prefWidth="150.0">
                                             <items>
                                                 <FXCollections fx:factory="observableArrayList">
-                                                    <String fx:value="Código de Barras" />
-                                                    <String fx:value="Nome Obra" />
-                                                    <String fx:value="Nome Autor" />
+                                                    <String fx:value="Nome" />
+                                                    <String fx:value="Cpf" />
                                                 </FXCollections>
                                             </items>
                                         </ComboBox>
