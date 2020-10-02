@@ -19,6 +19,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
+import model.Unidade;
 
 /**
  * FXML Controller class
@@ -88,8 +89,7 @@ public class PessoaController implements Initializable {
             }
             if (c_termoconsulta.getSelectionModel().getSelectedIndex() == 1) {
                 System.out.println("selecionou por cpf");
-            }
-            else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Selecione o filtro!", "", JOptionPane.INFORMATION_MESSAGE);
             }
         } else {
@@ -101,8 +101,9 @@ public class PessoaController implements Initializable {
     private void on_salvar(MouseEvent event) {
         System.out.println("SAVE");
         System.out.println("ADD");
+        t_matricula.setEditable(false);
         t_nome.setEditable(false);
-        t_nascimento.setEditable(false);       
+        t_nascimento.setEditable(false);
         t_cpf.setEditable(false);
         t_email.setEditable(false);
         t_telefone.setEditable(false);
@@ -112,19 +113,20 @@ public class PessoaController implements Initializable {
         b_rmv.setVisible(false);
         b_add.setVisible(true);
         b_save.setVisible(false);
-        
+
     }
 
     @FXML
     private void on_remover(MouseEvent event) {
         System.out.println("RMV");
     }
-    
+
     @FXML
     private void on_add(MouseEvent event) {
         System.out.println("ADD");
+        busca_unidade();
         t_nome.setEditable(true);
-        t_nascimento.setEditable(true);       
+        t_nascimento.setEditable(true);
         t_cpf.setEditable(true);
         t_email.setEditable(true);
         t_telefone.setEditable(true);
@@ -134,6 +136,32 @@ public class PessoaController implements Initializable {
         b_rmv.setVisible(false);
         b_save.setVisible(true);
         b_add.setVisible(false);
+    }
+
+    @FXML
+    private void on_verificaescola(MouseEvent event) {
+        if(!t_matricula.isEditable() && t_nome.isEditable()){
+            JOptionPane.showMessageDialog(null, "A opção matrícula está disponível apenas para escolas", "", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+    
+    void busca_unidade() {
+        Unidade unidade = new Unidade();
+        ConfiguracaoDao dao = new ConfiguracaoDao();
+        unidade = dao.getNomeUnidade();
+        try {
+            if (unidade.getEscola() == 1) {
+                System.out.println(unidade.getEscola());
+                System.out.println("É escola");
+                t_matricula.setEditable(true);
+            }
+            if (unidade.getEscola() != 1) {
+                System.out.println("NÃO é escola");
+                t_matricula.setEditable(false);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
 }
