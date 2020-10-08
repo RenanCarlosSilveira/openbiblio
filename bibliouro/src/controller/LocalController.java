@@ -13,10 +13,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
+import model.Estante;
+import model.Prateleira;
 
 /**
  * FXML Controller class
@@ -26,9 +29,15 @@ import javax.swing.JOptionPane;
 public class LocalController implements Initializable {
 
     @FXML
-    private Text l_base;
-    @FXML
     private Button b_back;
+    @FXML
+    private TextField t_id;
+    @FXML
+    private ImageView b_add;
+    @FXML
+    private ImageView b_save;
+    @FXML
+    private ImageView b_rmv;
     @FXML
     private TextField t_consulta;
     @FXML
@@ -36,7 +45,13 @@ public class LocalController implements Initializable {
     @FXML
     private ComboBox<?> c_termoconsulta;
     @FXML
-    private ListView<?> list_acervos;
+    private ListView<Prateleira> list_prateleira;
+    @FXML
+    private TextField t_codpe;
+    @FXML
+    private ComboBox<Estante> c_estante;
+
+
 
     /**
      * Initializes the controller class.
@@ -70,6 +85,37 @@ public class LocalController implements Initializable {
         } else {
             JOptionPane.showMessageDialog(null, "Digite o termo de Pesquisa!", "", JOptionPane.INFORMATION_MESSAGE);
         }
+    }
+
+@FXML
+    private void on_salvar(MouseEvent event
+    ) {
+        if ((t_codpe.getText().equals(null) || t_codpe.getText().equals(null)) || (t_codpe.getText().equals("") || t_codpe.getText().equals(""))) {
+            JOptionPane.showMessageDialog(null, "Preencha as informações obrigatorias (Identificação)", "", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            System.out.println("SAVE");
+            t_codpe.setText("");
+            t_codpe.setEditable(false);
+            b_rmv.setVisible(false);
+            b_add.setVisible(true);
+            b_save.setVisible(false);
+        }
+    }
+
+    @FXML
+    private void on_remover(MouseEvent event
+    ) {
+        System.out.println("RMV");
+    }
+
+    @FXML
+    private void on_add(MouseEvent event
+    ) {
+        System.out.println("ADD");
+        t_codpe.setEditable(true);
+        b_rmv.setVisible(false);
+        b_save.setVisible(true);
+        b_add.setVisible(false);
     }
 
 }

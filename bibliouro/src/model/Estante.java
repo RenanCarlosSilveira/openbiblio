@@ -51,6 +51,8 @@ public class Estante {
         this.codigoEstante = codigoEstante;
     }
 
-
-
+    @Override
+    public String toString() {
+        return codigoEstante;
+    }
 }

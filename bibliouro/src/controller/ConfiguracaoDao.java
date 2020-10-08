@@ -5,6 +5,7 @@
  */
 package controller;
 
+import java.util.List;
 import util.HibernateJPAUtil;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -14,6 +15,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import model.Estante;
 import model.Unidade;
 
 /**
@@ -61,6 +63,22 @@ public class ConfiguracaoDao {
             query.where(nomeIgual);
             TypedQuery<Unidade> typedQuery = this.getManager().createQuery(query);
             return typedQuery.getSingleResult();
+        } catch (NoResultException e) {
+            System.out.println(e);
+            return null;
+        }
+    }
+    
+    public List<Estante> getEstante() {
+        CriteriaBuilder builder = this.getManager().getCriteriaBuilder();
+        CriteriaQuery<Estante> query = builder.createQuery(Estante.class);
+        Root<Estante> root = query.from(Estante.class);
+        try {
+            Path<String> nomePath = root.<String>get("idEstante");
+            Predicate nomeIgual = builder.isNotNull(nomePath);
+            query.where(nomeIgual);
+            TypedQuery<Estante> typedQuery = this.getManager().createQuery(query);
+            return typedQuery.getResultList();
         } catch (NoResultException e) {
             System.out.println(e);
             return null;

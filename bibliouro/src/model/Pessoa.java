@@ -12,6 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -28,6 +30,7 @@ public class Pessoa {
     @Column(name = "nome")
     private String nome;
     @Column(name = "nascimento")
+    //@Temporal(TemporalType.DATE)
     private Date nascimento;
     @Column(name = "telefone")
     private int telefone;
