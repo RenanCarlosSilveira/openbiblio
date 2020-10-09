@@ -57,7 +57,7 @@
                 </Pane>
                 <TabPane maxHeight="512.0" maxWidth="869.0" minHeight="512.0" minWidth="408.0" prefHeight="512.0" prefWidth="869.0" side="BOTTOM" style="-fx-background-color: #ffffff;" tabClosingPolicy="UNAVAILABLE" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowSpan="6">
                     <tabs>
-                        <Tab fx:id="tabcadastro" style="-fx-font: 20px Tahoma;" text="Cadastro">
+                        <Tab style="-fx-font: 20px Tahoma;" text="Cadastro">
                             <content>
                                 <AnchorPane maxWidth="953.0" minHeight="0.0" minWidth="408.0" prefHeight="481.0" prefWidth="953.0">
                            <children>

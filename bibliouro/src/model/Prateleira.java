@@ -68,7 +68,6 @@ public class Prateleira {
 
     @Override
     public String toString() {
-        return "Identificação: " + codigoPE;
+        return "Identificação: " + codigoPE + " - Estante: "+ idEstante;
     }
-
 }

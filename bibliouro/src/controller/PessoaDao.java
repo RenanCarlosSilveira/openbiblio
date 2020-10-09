@@ -16,13 +16,7 @@ import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import model.Pessoa;
-import model.Unidade;
 
-/**
- *
- * @author Eduardo Comin <eduardo.comin@unoesc.edu.br>
- * @since 2018/01
- */
 public class PessoaDao {
 
     private EntityManager manager = new HibernateJPAUtil().getEntityManager();
@@ -31,12 +25,21 @@ public class PessoaDao {
         return manager;
     }
 
+    public void closedb() {
+        try {
+            this.getManager().close();
+            System.out.println("Conexão encerrada");
+        } catch (Exception e) {
+            System.out.println("Nao foi possivel encerrar conexão: " + e);
+        }
+    }
+
     public void salvar(Object objeto) {
         try {
             this.getManager().getTransaction().begin();
             this.getManager().persist(objeto);
             this.getManager().getTransaction().commit();
-            this.getManager().close();
+            //this.getManager().close();
         } catch (Exception e) {
             System.out.println("Nao foi possivel inserir: " + e);
         }
@@ -47,7 +50,7 @@ public class PessoaDao {
             this.getManager().getTransaction().begin();
             this.getManager().remove(objeto);
             this.getManager().getTransaction().commit();
-            this.getManager().close();
+            //this.getManager().close();
         } catch (Exception e) {
             System.out.println("Nao foi possivel remover: " + e);
         }

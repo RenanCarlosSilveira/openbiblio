@@ -18,11 +18,6 @@ import javax.persistence.criteria.Root;
 import model.Estante;
 import model.Unidade;
 
-/**
- *
- * @author Eduardo Comin <eduardo.comin@unoesc.edu.br>
- * @since 2018/01
- */
 public class ConfiguracaoDao {
 
     private EntityManager manager = new HibernateJPAUtil().getEntityManager();
@@ -69,7 +64,7 @@ public class ConfiguracaoDao {
         }
     }
     
-    public List<Estante> getEstante() {
+    public List<Estante> getEstantes() {
         CriteriaBuilder builder = this.getManager().getCriteriaBuilder();
         CriteriaQuery<Estante> query = builder.createQuery(Estante.class);
         Root<Estante> root = query.from(Estante.class);

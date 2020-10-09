@@ -149,6 +149,11 @@
                             <content>
                                 <AnchorPane maxWidth="868.0" minHeight="0.0" minWidth="408.0" prefHeight="481.0" prefWidth="868.0">
                                     <children>
+                              <ImageView fx:id="b_editar" fitHeight="84.0" fitWidth="72.0" layoutX="733.0" layoutY="395.0" onMouseClicked="#on_editar" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../util/edit.png" />
+                                 </image>
+                              </ImageView>
                                         <Text layoutX="14.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Busca:">
                                             <font>
                                                 <Font size="18.0" />
@@ -156,9 +161,9 @@
                                         </Text>
                                         <TextField fx:id="t_consulta" layoutX="73.0" layoutY="25.0" prefHeight="25.0" prefWidth="683.0" />
                                         <Button fx:id="b_busca" layoutX="769.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#on_buscar" text="&gt;&gt;" />
-                                        <ScrollPane layoutX="14.0" layoutY="60.0" prefHeight="406.0" prefWidth="789.0">
+                                        <ScrollPane layoutX="14.0" layoutY="60.0" prefHeight="327.0" prefWidth="789.0">
                                             <content>
-                                                <ListView fx:id="list_prateleira" prefHeight="390.0" prefWidth="787.0" />
+                                                <ListView fx:id="list_prateleira" prefHeight="326.0" prefWidth="787.0" />
                                             </content>
                                         </ScrollPane>
                                     </children>
