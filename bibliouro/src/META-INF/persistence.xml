@@ -8,6 +8,8 @@
     <class>model.TipoAcervo</class>
     <class>model.Unidade</class>
     <class>model.Estante</class>
+    <class>model.Pessoa</class>
+    <class>model.Prateleira</class>
     <properties>
       <!-- Propriedades JDBC -->
       <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
