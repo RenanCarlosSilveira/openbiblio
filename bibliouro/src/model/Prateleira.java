@@ -66,4 +66,9 @@ public class Prateleira {
         this.codigoPE = codigoPE;
     }
 
+    @Override
+    public String toString() {
+        return "Identificação: " + codigoPE;
+    }
+
 }

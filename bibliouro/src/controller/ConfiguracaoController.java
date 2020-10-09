@@ -7,6 +7,8 @@ package controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,6 +20,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import model.Estante;
+import model.Pessoa;
 import model.TipoAcervo;
 import model.Unidade;
 
@@ -65,19 +68,6 @@ public class ConfiguracaoController implements Initializable {
         stage.close();
     }
 
-    @FXML
-    private void on_salvartipo(ActionEvent event) {
-        if (!t_nometipo.getText().equals("")) {
-            ConfiguracaoDao dao = new ConfiguracaoDao();
-            TipoAcervo tipo = new TipoAcervo();
-            tipo.setNome(t_nometipo.getText());
-            dao.salvar(tipo);
-            System.out.println("Salvo!");
-            t_nometipo.setText("");
-        } else {
-            JOptionPane.showMessageDialog(null, "Favor preencher as informações!", "Bibliouro", JOptionPane.INFORMATION_MESSAGE);
-        }
-    }
 
     @FXML
     private void on_salvarestante(ActionEvent event) {

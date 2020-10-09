@@ -15,7 +15,8 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import model.Estante;
+import model.Pessoa;
+import model.Prateleira;
 import model.Unidade;
 
 /**
@@ -23,7 +24,7 @@ import model.Unidade;
  * @author Eduardo Comin <eduardo.comin@unoesc.edu.br>
  * @since 2018/01
  */
-public class ConfiguracaoDao {
+public class LocalDao {
 
     private EntityManager manager = new HibernateJPAUtil().getEntityManager();
 
@@ -53,39 +54,37 @@ public class ConfiguracaoDao {
         }
     }
 
-    public Unidade getNomeUnidade() {
+    public List<Prateleira> getPessoasNome(String nome) {
         CriteriaBuilder builder = this.getManager().getCriteriaBuilder();
-        CriteriaQuery<Unidade> query = builder.createQuery(Unidade.class);
-        Root<Unidade> root = query.from(Unidade.class);
+        CriteriaQuery<Prateleira> query = builder.createQuery(Prateleira.class);
+        Root<Prateleira> root = query.from(Prateleira.class);
         try {
-            Path<String> nomePath = root.<String>get("idUnidade");
-            Predicate nomeIgual = builder.isNotNull(nomePath);
+            Path<String> nomePath = root.<String>get("codigoPE");
+            Predicate nomeIgual = builder.like(nomePath, "%" + nome + "%");
             query.where(nomeIgual);
-            TypedQuery<Unidade> typedQuery = this.getManager().createQuery(query);
-            return typedQuery.getSingleResult();
-        } catch (NoResultException e) {
-            System.out.println(e);
-            return null;
-        }
-    }
-    
-    public List<Estante> getEstante() {
-        CriteriaBuilder builder = this.getManager().getCriteriaBuilder();
-        CriteriaQuery<Estante> query = builder.createQuery(Estante.class);
-        Root<Estante> root = query.from(Estante.class);
-        try {
-            Path<String> nomePath = root.<String>get("idEstante");
-            Predicate nomeIgual = builder.isNotNull(nomePath);
-            query.where(nomeIgual);
-            TypedQuery<Estante> typedQuery = this.getManager().createQuery(query);
+            TypedQuery<Prateleira> typedQuery = this.getManager().createQuery(query);
             return typedQuery.getResultList();
         } catch (NoResultException e) {
             System.out.println(e);
             return null;
         }
     }
-    
 
+    public List<Pessoa> getPessoasCpf(int cpf) {
+        CriteriaBuilder builder = this.getManager().getCriteriaBuilder();
+        CriteriaQuery<Pessoa> query = builder.createQuery(Pessoa.class);
+        Root<Pessoa> root = query.from(Pessoa.class);
+        try {
+            Path<String> nomePath = root.<String>get("cpf");
+            Predicate nomeIgual = builder.like(nomePath, String.valueOf(cpf));
+            query.where(nomeIgual);
+            TypedQuery<Pessoa> typedQuery = this.getManager().createQuery(query);
+            return typedQuery.getResultList();
+        } catch (NoResultException e) {
+            System.out.println(e);
+            return null;
+        }
+    }
 /////////////////////////////////////// DOENCA ///////////////////////////////////////////////////////////////////////    
 /*public void incluirTipoAcervo(TipoAcervo doen) {
         try {
