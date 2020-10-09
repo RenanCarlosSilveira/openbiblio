@@ -15,6 +15,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -30,6 +32,8 @@ import model.Unidade;
  * @author renan
  */
 public class PessoaController implements Initializable {
+
+    Pessoa pesglobal = new Pessoa();
 
     @FXML
     private Text l_base;
@@ -71,6 +75,10 @@ public class PessoaController implements Initializable {
     private Text l_matricula;
     @FXML
     private ListView<Pessoa> list_pessoas;
+    @FXML
+    private ImageView b_editar;
+    @FXML
+    private Tab tabcadastro;
 
     /**
      * Initializes the controller class.
@@ -224,10 +232,26 @@ public class PessoaController implements Initializable {
     }
 
     @FXML
-    private void on_seleciona(MouseEvent event) {
-        Pessoa pes = new Pessoa();
-        //int index = ListViewItem.Index;
-        //pes = (Pessoa) list_pessoas.getSelectionModel().getSelectedIndices();
+    private void on_editar(MouseEvent event) {
+        if (list_pessoas.getSelectionModel().getSelectedItem() != null) {
+            pesglobal = null;
+            pesglobal = list_pessoas.getSelectionModel().getSelectedItem();
+            //int index = ListViewItem.Index;
+            System.out.println(pesglobal);
+            t_nome.setText(pesglobal.getNome());
+            t_cpf.setText(String.valueOf(pesglobal.getCpf()));
+            t_email.setText(pesglobal.getEmail());
+            t_id.setText(String.valueOf(pesglobal.getIdPessoa()));
+            t_matricula.setText(String.valueOf(pesglobal.getMatricula()));
+            //t_nascimento.setText(pesglobal.getNome());
+            t_numero.setText(pesglobal.getNumero());
+            t_rua.setText(pesglobal.getRua());
+            t_telefone.setText(String.valueOf(pesglobal.getTelefone()));
+            t_bairro.setText(pesglobal.getBairro());
+            //tabcadastro.isSelected();
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione um registro para editar!", "", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
 
 }

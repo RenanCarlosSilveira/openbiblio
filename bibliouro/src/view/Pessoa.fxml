@@ -57,7 +57,7 @@
                 </Pane>
                 <TabPane maxHeight="512.0" maxWidth="869.0" minHeight="512.0" minWidth="408.0" prefHeight="512.0" prefWidth="869.0" side="BOTTOM" style="-fx-background-color: #ffffff;" tabClosingPolicy="UNAVAILABLE" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowSpan="6">
                     <tabs>
-                        <Tab style="-fx-font: 20px Tahoma;" text="Cadastro">
+                        <Tab fx:id="tabcadastro" style="-fx-font: 20px Tahoma;" text="Cadastro">
                             <content>
                                 <AnchorPane maxWidth="953.0" minHeight="0.0" minWidth="408.0" prefHeight="481.0" prefWidth="953.0">
                            <children>
@@ -267,9 +267,14 @@
                                                 </FXCollections>
                                             </items>
                                         </ComboBox>
-                                        <ScrollPane layoutX="14.0" layoutY="60.0" prefHeight="406.0" prefWidth="789.0">
+                              <ImageView fx:id="b_editar" fitHeight="84.0" fitWidth="72.0" layoutX="733.0" layoutY="395.0" onMouseClicked="#on_editar" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../util/edit.png" />
+                                 </image>
+                              </ImageView>
+                                        <ScrollPane layoutX="14.0" layoutY="60.0" prefHeight="326.0" prefWidth="789.0">
                                             <content>
-                                                <ListView fx:id="list_pessoas" onMouseClicked="#on_seleciona" prefHeight="390.0" prefWidth="787.0" />
+                                                <ListView fx:id="list_pessoas" prefHeight="346.0" prefWidth="787.0" />
                                             </content>
                                         </ScrollPane>
                                     </children>
