@@ -86,6 +86,8 @@ public class PessoaController implements Initializable {
             if (c_termoconsulta.getSelectionModel().getSelectedIndex() == 0) {
                 System.out.println("selecionou por nome");
                 ObservableList<Pessoa> pessoas = FXCollections.observableArrayList();
+                pessoas.clear();
+                list_pessoas.setItems(null);
                 PessoaDao dao = new PessoaDao();
                 for (Pessoa c : dao.getPessoasNome(t_consulta.getText())) {
                     pessoas.add(c);
@@ -96,6 +98,8 @@ public class PessoaController implements Initializable {
             if (c_termoconsulta.getSelectionModel().getSelectedIndex() == 1) {
                 System.out.println("selecionou por cpf");
                 ObservableList<Pessoa> pessoas = FXCollections.observableArrayList();
+                pessoas.clear();
+                list_pessoas.setItems(null);
                 PessoaDao dao = new PessoaDao();
                 for (Pessoa c : dao.getPessoasCpf(Integer.valueOf(t_consulta.getText()))) {
                     pessoas.add(c);
@@ -116,11 +120,6 @@ public class PessoaController implements Initializable {
         t_consulta.setText("");
     }
 
-    /*ObservableList<Word> wordsList = FXCollections.observableArrayList();
-wordsList.add(new Word("First Word", "Definition of First Word");
-wordsList.add(new Word("Second Word", "Definition of Second Word");
-wordsList.add(new Word("Third Word", "Definition of Third Word");
-ListView<Word> listViewOfWords = new ListView<>(wordsList);*/
     @FXML
     private void closeview(MouseEvent event
     ) {
@@ -222,6 +221,13 @@ ListView<Word> listViewOfWords = new ListView<>(wordsList);*/
         } catch (Exception e) {
             System.out.println(e);
         }
+    }
+
+    @FXML
+    private void on_seleciona(MouseEvent event) {
+        Pessoa pes = new Pessoa();
+        //int index = ListViewItem.Index;
+        //pes = (Pessoa) list_pessoas.getSelectionModel().getSelectedIndices();
     }
 
 }

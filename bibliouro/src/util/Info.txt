@@ -15,3 +15,8 @@ JAVA:
 Arquivo - MainController
 Obs - Possui função para criação de joption para opções de admin personalizada, reutilizável.
 Trecho - private void on_config(MouseEvent event)
+
+Arquivo - PessoaController
+Obs - Possui função para limpar as ListViews ao realizar nova consulta
+Trecho - pessoas.clear();
+         list_pessoas.setItems(null);

@@ -79,17 +79,23 @@ public class LocalController implements Initializable {
 
     @FXML
     private void on_buscar(MouseEvent event) {
-        if (!t_consulta.getText().equals("")) {
+        //if (!t_consulta.getText().equals("")) {
+        try {
             ObservableList<Prateleira> prateleiras = FXCollections.observableArrayList();
-                LocalDao dao = new LocalDao();
-                for (Prateleira c : dao.getPessoasNome(t_consulta.getText())) {
-                    prateleiras.add(c);
-                    System.out.println(prateleiras);
-                    list_prateleira.setItems(prateleiras);
-                }
-        } else {
-            JOptionPane.showMessageDialog(null, "Digite o termo de Pesquisa!", "", JOptionPane.INFORMATION_MESSAGE);
+            prateleiras.clear();
+            list_prateleira.setItems(null);
+            LocalDao dao = new LocalDao();
+            for (Prateleira c : dao.getPessoasNome(t_consulta.getText())) {
+                prateleiras.add(c);
+                System.out.println(prateleiras);
+                list_prateleira.setItems(prateleiras);
+            }
+        } catch (Exception e) {
+            throw e;
         }
+        //} else {
+        //  JOptionPane.showMessageDialog(null, "Digite o termo de Pesquisa!", "", JOptionPane.INFORMATION_MESSAGE);
+        //}
     }
 
     @FXML

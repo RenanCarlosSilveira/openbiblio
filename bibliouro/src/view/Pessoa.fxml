@@ -269,7 +269,7 @@
                                         </ComboBox>
                                         <ScrollPane layoutX="14.0" layoutY="60.0" prefHeight="406.0" prefWidth="789.0">
                                             <content>
-                                                <ListView fx:id="list_pessoas" prefHeight="390.0" prefWidth="787.0" />
+                                                <ListView fx:id="list_pessoas" onMouseClicked="#on_seleciona" prefHeight="390.0" prefWidth="787.0" />
                                             </content>
                                         </ScrollPane>
                                     </children>
