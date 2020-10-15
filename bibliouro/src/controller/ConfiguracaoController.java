@@ -68,7 +68,6 @@ public class ConfiguracaoController implements Initializable {
         stage.close();
     }
 
-
     @FXML
     private void on_salvarestante(ActionEvent event) {
         if (!t_estante.getText().equals("")) {
@@ -129,5 +128,18 @@ public class ConfiguracaoController implements Initializable {
             c_escola.setDisable(true);
         }
         dao.salvar(unidade);
+    }
+
+    @FXML
+    private void on_salvartipo(ActionEvent event) {
+        if (!t_nometipo.equals(null) || t_nometipo.equals("")) {
+            ConfiguracaoDao dao = new ConfiguracaoDao();
+            TipoAcervo tipo = new TipoAcervo();
+            tipo.setNome(t_nometipo.getText());
+            dao.salvar(tipo);
+            System.out.println("Salvo!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Favor preencher as informações!", "Bibliouro", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
 }

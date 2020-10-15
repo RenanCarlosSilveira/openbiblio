@@ -2,12 +2,13 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
-  */
+ */
 package controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -16,9 +17,11 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
+import model.Estante;
+import model.Prateleira;
+import model.TipoAcervo;
 
 /**
  * FXML Controller class
@@ -35,11 +38,7 @@ public class AcervoController implements Initializable {
     @FXML
     private Button b_busca;
     @FXML
-    private TextField t_codpe;
-    @FXML
     private TextField t_id;
-    @FXML
-    private ComboBox<?> c_estante;
     @FXML
     private ImageView b_add;
     @FXML
@@ -50,15 +49,31 @@ public class AcervoController implements Initializable {
     private ImageView b_editar;
     @FXML
     private ListView<?> list_prateleira;
+    @FXML
+    private TextField t_nomeacervo;
+    @FXML
+    private TextField t_chamada;
+    @FXML
+    private TextField t_exemplares;
+    @FXML
+    private TextField t_edicao;
+    @FXML
+    private TextField t_ano;
+    @FXML
+    private TextField t_status;
+    @FXML
+    private ComboBox<TipoAcervo> c_tipo;
+    @FXML
+    private ComboBox<Prateleira> c_local;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        populacombo();
     }
-    
+
     @FXML
     private void on_buscar(MouseEvent event) {
         if (!t_consulta.getText().equals("")) {
@@ -99,6 +114,23 @@ public class AcervoController implements Initializable {
 
     @FXML
     private void on_editar(MouseEvent event) {
+    }
+
+    public void populacombo() {
+        ObservableList<Prateleira> prateleiras = FXCollections.observableArrayList();
+        LocalDao dao = new LocalDao();
+        for (Prateleira c : dao.getLocais("")) {
+            prateleiras.add(c);
+            System.out.println(prateleiras);
+            c_local.setItems(prateleiras);
+        }
+        ObservableList<TipoAcervo> tipos = FXCollections.observableArrayList();
+        ConfiguracaoDao dao2 = new ConfiguracaoDao();
+        for (TipoAcervo c : dao2.getTipoAcervo()) {
+        tipos.add(c);
+        System.out.println(tipos);
+        c_tipo.setItems(tipos);
+        }
     }
 
 }

@@ -16,6 +16,7 @@ import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import model.Estante;
+import model.TipoAcervo;
 import model.Unidade;
 
 public class ConfiguracaoDao {
@@ -63,7 +64,7 @@ public class ConfiguracaoDao {
             return null;
         }
     }
-    
+
     public List<Estante> getEstantes() {
         CriteriaBuilder builder = this.getManager().getCriteriaBuilder();
         CriteriaQuery<Estante> query = builder.createQuery(Estante.class);
@@ -79,7 +80,22 @@ public class ConfiguracaoDao {
             return null;
         }
     }
-    
+
+    public List<TipoAcervo> getTipoAcervo() {
+        CriteriaBuilder builder = this.getManager().getCriteriaBuilder();
+        CriteriaQuery<TipoAcervo> query = builder.createQuery(TipoAcervo.class);
+        Root<TipoAcervo> root = query.from(TipoAcervo.class);
+        try {
+            Path<String> nomePath = root.<String>get("idTipoAcervo");
+            Predicate nomeIgual = builder.isNotNull(nomePath);
+            query.where(nomeIgual);
+            TypedQuery<TipoAcervo> typedQuery = this.getManager().createQuery(query);
+            return typedQuery.getResultList();
+        } catch (NoResultException e) {
+            System.out.println(e);
+            return null;
+        }
+    }
 
 /////////////////////////////////////// DOENCA ///////////////////////////////////////////////////////////////////////    
 /*public void incluirTipoAcervo(TipoAcervo doen) {
