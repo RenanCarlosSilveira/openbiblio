@@ -302,7 +302,6 @@ public class PessoaController implements Initializable {
             b_save.setVisible(true);
             b_add.setVisible(false);
             list_pessoas.setItems(null);
-            //tabcadastro.isSelected();
         } else {
             JOptionPane.showMessageDialog(null, "Selecione um registro para editar!", "", JOptionPane.INFORMATION_MESSAGE);
         }

@@ -90,7 +90,6 @@ public class LocalController implements Initializable {
             ObservableList<Prateleira> prateleiras = FXCollections.observableArrayList();
             prateleiras.clear();
             list_prateleira.setItems(null);
-            LocalDao dao = new LocalDao();
             for (Prateleira c : dao.getLocais(t_consulta.getText())) {
                 prateleiras.add(c);
                 System.out.println(prateleiras);
@@ -120,8 +119,10 @@ public class LocalController implements Initializable {
             }
         } else {
             this.pratglobal.setCodigoPE(t_codpe.getText());
-           // this.pratglobal.setIdEstante((Estante) c_estante.getSelectionModel().getSelectedItem());
-            dao.salvar(this.pratglobal);
+            Estante est = new Estante();
+            est = c_estante.getSelectionModel().getSelectedItem();
+            this.pratglobal.setIdEstante(est);
+            this.dao.salvar(this.pratglobal);
             System.out.println("UPDT");
         }
         t_id.setText("");
@@ -174,7 +175,6 @@ public class LocalController implements Initializable {
             b_save.setVisible(true);
             b_add.setVisible(false);
             list_prateleira.setItems(null);
-            //tabcadastro.isSelected();
         } else {
             JOptionPane.showMessageDialog(null, "Selecione um registro para editar!", "", JOptionPane.INFORMATION_MESSAGE);
         }
