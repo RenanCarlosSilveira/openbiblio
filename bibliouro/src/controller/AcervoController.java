@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -27,17 +28,28 @@ import javax.swing.JOptionPane;
 public class AcervoController implements Initializable {
 
     @FXML
-    private Text l_base;
-    @FXML
     private TextField t_consulta;
-    @FXML
     private ComboBox<?> c_termoconsulta;
-    @FXML
-    private ListView<?> list_acervos;
     @FXML
     private Button b_back;
     @FXML
     private Button b_busca;
+    @FXML
+    private TextField t_codpe;
+    @FXML
+    private TextField t_id;
+    @FXML
+    private ComboBox<?> c_estante;
+    @FXML
+    private ImageView b_add;
+    @FXML
+    private ImageView b_save;
+    @FXML
+    private ImageView b_rmv;
+    @FXML
+    private ImageView b_editar;
+    @FXML
+    private ListView<?> list_prateleira;
 
     /**
      * Initializes the controller class.
@@ -71,6 +83,22 @@ public class AcervoController implements Initializable {
     private void closeview(MouseEvent event) {
         Stage stage = (Stage) b_back.getScene().getWindow();
         stage.close();
+    }
+
+    @FXML
+    private void on_add(MouseEvent event) {
+    }
+
+    @FXML
+    private void on_salvar(MouseEvent event) {
+    }
+
+    @FXML
+    private void on_remover(MouseEvent event) {
+    }
+
+    @FXML
+    private void on_editar(MouseEvent event) {
     }
 
 }
