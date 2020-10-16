@@ -10,6 +10,8 @@
     <class>model.Estante</class>
     <class>model.Pessoa</class>
     <class>model.Prateleira</class>
+    <class>model.Acervo</class>
+    <class>model.Autor</class>
     <properties>
       <!-- Propriedades JDBC -->
       <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>

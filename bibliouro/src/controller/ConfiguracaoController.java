@@ -7,8 +7,7 @@ package controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -20,7 +19,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import model.Estante;
-import model.Pessoa;
 import model.TipoAcervo;
 import model.Unidade;
 
@@ -85,10 +83,10 @@ public class ConfiguracaoController implements Initializable {
     @FXML
     private void on_salvarunidade(ActionEvent event) {
         if (!t_base.getText().equals("")) {
-            ConfiguracaoDao dao = new ConfiguracaoDao();
-            Unidade unidade = new Unidade();
-            unidade.setNomeUnidade(t_base.getText());
-            dao.salvar(unidade);
+            //ConfiguracaoDao dao = new ConfiguracaoDao();
+            Unidade unidade2 = new Unidade();
+            unidade2.setNomeUnidade(t_base.getText());
+            dao.salvar(unidade2);
             System.out.println("Salvo!");
         } else {
             JOptionPane.showMessageDialog(null, "Favor preencher as informações!", "Bibliouro", JOptionPane.INFORMATION_MESSAGE);

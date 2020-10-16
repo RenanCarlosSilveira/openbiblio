@@ -24,7 +24,7 @@ import javax.persistence.Table;
 public class Prateleira {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "idPrateleira")
     private int idPrateleira;
     @ManyToOne(fetch = FetchType.EAGER)
@@ -68,6 +68,6 @@ public class Prateleira {
 
     @Override
     public String toString() {
-        return "Estante: "+ idEstante + " - Identificação: " + codigoPE;
+        return "Estante: "+ idEstante + " - Prateleira: " + codigoPE;
     }
 }

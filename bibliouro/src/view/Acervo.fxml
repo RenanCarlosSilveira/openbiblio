@@ -159,7 +159,7 @@
                                           <Font size="18.0" />
                                        </font>
                                     </TextField>
-                                    <TextField fx:id="t_ano" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                                    <TextField fx:id="t_ano" maxHeight="38.0" maxWidth="174.0" minHeight="38.0" minWidth="174.0" prefHeight="38.0" prefWidth="174.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
                                        <GridPane.margin>
                                           <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                                        </GridPane.margin>
@@ -183,7 +183,7 @@
                                           <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                                        </GridPane.margin>
                                     </Text>
-                                    <ComboBox fx:id="c_tipo" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                    <ComboBox fx:id="c_tipo" maxHeight="38.0" minHeight="38.0" prefHeight="38.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                        <GridPane.margin>
                                           <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                                        </GridPane.margin>
@@ -196,7 +196,7 @@
                                           <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                                        </GridPane.margin>
                                     </Text>
-                                    <ComboBox fx:id="c_local" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                                    <ComboBox fx:id="c_local" maxHeight="38.0" maxWidth="174.0" minHeight="38.0" minWidth="174.0" prefHeight="38.0" prefWidth="174.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
                                        <GridPane.margin>
                                           <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                                        </GridPane.margin>
@@ -215,6 +215,9 @@
                                        <font>
                                           <Font size="18.0" />
                                        </font>
+                                       <GridPane.margin>
+                                          <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                       </GridPane.margin>
                                     </Text>
                                     <TextField fx:id="t_busca_autores" onKeyTyped="#on_listaautores" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                        <GridPane.margin>
@@ -240,6 +243,14 @@
                                           <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                                        </GridPane.margin>
                                     </ImageView>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Selecionados:" GridPane.columnIndex="4" GridPane.rowIndex="4">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                       </GridPane.margin>
+                                    </Text>
                                  </children>
                                  <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="129.0" minWidth="129.0" prefWidth="129.0" />

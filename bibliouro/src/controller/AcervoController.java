@@ -6,6 +6,8 @@
 package controller;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,7 +16,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
-import javafx.scene.control.MultipleSelectionModel;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -96,22 +97,21 @@ public class AcervoController implements Initializable {
 
     @FXML
     private void on_buscar(MouseEvent event) {
-        if (!t_consulta.getText().equals("")) {
-            if (c_termoconsulta.getSelectionModel().getSelectedIndex() == 0) {
-                System.out.println("selecionou por barras");
-            }
-            if (c_termoconsulta.getSelectionModel().getSelectedIndex() == 1) {
-                System.out.println("selecionou por obra");
-            }
-            if (c_termoconsulta.getSelectionModel().getSelectedIndex() == 2) {
-                System.out.println("selecionou por autor");
+        //if (!t_consulta.getText().equals("")) {
+            ObservableList<Acervo> acervos = FXCollections.observableArrayList();
+            acervos.clear();
+            list_acervos.setItems(null);
+            for (Acervo c : dao.getAcervosNome(t_consulta.getText())) {
+                acervos.add(c);
+                System.out.println(acervos);
+                list_acervos.setItems(acervos);
             }
             /*if (c_termoconsulta.getSelectionModel().getSelectedIndex()){
             JOptionPane.showMessageDialog(null, "Selecione o termo de Pesquisa!", "", JOptionPane.INFORMATION_MESSAGE);
         }*/
-        } else {
-            JOptionPane.showMessageDialog(null, "Digite o termo de Pesquisa!", "", JOptionPane.INFORMATION_MESSAGE);
-        }
+       // } else {
+          //  JOptionPane.showMessageDialog(null, "Digite o termo de Pesquisa!", "", JOptionPane.INFORMATION_MESSAGE);
+       // }
     }
 
     @FXML
@@ -125,18 +125,26 @@ public class AcervoController implements Initializable {
     @FXML
     private void on_salvar(MouseEvent event
     ) {
-        /* if (t_id.getText().equals(null) || t_id.getText().equals("")) {
-            if ((t_nome.getText().equals(null) || t_nome.getText().equals(null)) || (t_nome.getText().equals("") || t_nome.getText().equals(""))) {
+        if (t_id.getText().equals(null) || t_id.getText().equals("")) {
+            if ((t_nomeacervo.getText().equals(null) || t_nomeacervo.getText().equals(null)) || (t_nomeacervo.getText().equals("") || t_nomeacervo.getText().equals(""))) {
                 JOptionPane.showMessageDialog(null, "Preencha as informações obrigatorias (Nome)", "", JOptionPane.INFORMATION_MESSAGE);
             } else {
-                AutorDao dao = new AutorDao();
-                Autor autor = new Autor();
-                autor.setNome(t_nome.getText());
-                autor.setNacionalidade(t_nacionalidade.getText());
-                dao.salvar(autor);
+                AcervoDao dao = new AcervoDao();
+                Acervo acervo = new Acervo();
+                acervo.setNome(t_nomeacervo.getText());
+                acervo.setAno(Integer.valueOf(t_ano.getText()));
+                acervo.setChamada(t_chamada.getText());
+                acervo.setEdicao(Integer.valueOf(t_edicao.getText()));
+                acervo.setTotalexemplares(Integer.valueOf(t_exemplares.getText()));
+                //acervo.setIdTipoAcervo(c_tipo.getSelectionModel().getSelectedItem());
+                //acervo.setIdPrateleira(c_local.getSelectionModel().getSelectedItem());
+                ObservableList<Autor> autores = FXCollections.observableArrayList();
+                autores.addAll(autoresselecionados);
+                acervo.setIdAutor(autores);
+                dao.salvar(acervo);
                 System.out.println("SAVE");
             }
-        } else {
+        } /*else {
             this.autorglobal.setIdAutor(Integer.valueOf(t_id.getText()));
             this.autorglobal.setNome(t_nome.getText());
             this.autorglobal.setNacionalidade(t_nacionalidade.getText());

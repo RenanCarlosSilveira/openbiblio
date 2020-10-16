@@ -25,9 +25,9 @@ import javax.persistence.Table;
 public class Autor {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "idAutor")
-    private int idAutor;
+    int idAutor;
     @Column(name = "nome")
     private String nome;
     @Column(name = "nacionalidade")
