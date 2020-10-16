@@ -62,9 +62,9 @@
                             <content>
                                 <AnchorPane maxWidth="953.0" minHeight="0.0" minWidth="408.0" prefHeight="481.0" prefWidth="953.0">
                            <children>
-                              <GridPane layoutX="13.0" layoutY="13.0" prefHeight="374.0" prefWidth="773.0">
+                              <GridPane layoutX="13.0" layoutY="13.0" maxHeight="374.0" maxWidth="774.0" minHeight="374.0" minWidth="774.0" prefHeight="374.0" prefWidth="774.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:" GridPane.rowIndex="1">
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:" GridPane.columnIndex="1">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -72,7 +72,7 @@
                                           <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                                        </GridPane.margin>
                                     </Text>
-                                    <TextField fx:id="t_nomeacervo" editable="false" GridPane.columnIndex="1" GridPane.columnSpan="5" GridPane.rowIndex="1">
+                                    <TextField fx:id="t_nomeacervo" editable="false" GridPane.columnIndex="2" GridPane.columnSpan="4">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -80,7 +80,7 @@
                                           <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Exemplares:" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Exemplares:" GridPane.columnIndex="4" GridPane.rowIndex="1">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -103,7 +103,7 @@
                                           <Insets left="2.0" right="2.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Chamada:" GridPane.rowIndex="2">
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Chamada:" GridPane.rowIndex="1">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -111,7 +111,7 @@
                                           <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                                        </GridPane.margin>
                                     </Text>
-                                    <TextField fx:id="t_chamada" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2">
+                                    <TextField fx:id="t_chamada" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
                                        <GridPane.margin>
                                           <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                                        </GridPane.margin>
@@ -119,7 +119,7 @@
                                           <Font size="18.0" />
                                        </font>
                                     </TextField>
-                                    <TextField fx:id="t_exemplares" GridPane.columnIndex="5" GridPane.rowIndex="2">
+                                    <TextField fx:id="t_exemplares" GridPane.columnIndex="5" GridPane.rowIndex="1">
                                        <GridPane.margin>
                                           <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                                        </GridPane.margin>
@@ -127,7 +127,7 @@
                                           <Font size="18.0" />
                                        </font>
                                     </TextField>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Edicao:" GridPane.rowIndex="3">
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Edicao:" GridPane.rowIndex="2">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -135,7 +135,7 @@
                                           <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                                        </GridPane.margin>
                                     </Text>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ano:" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ano:" GridPane.columnIndex="2" GridPane.rowIndex="2">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -143,7 +143,7 @@
                                           <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                                        </GridPane.margin>
                                     </Text>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Status:" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Status:" GridPane.columnIndex="4" GridPane.rowIndex="2">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -151,7 +151,7 @@
                                           <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                                        </GridPane.margin>
                                     </Text>
-                                    <TextField fx:id="t_edicao" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                    <TextField fx:id="t_edicao" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                        <GridPane.margin>
                                           <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                                        </GridPane.margin>
@@ -159,7 +159,7 @@
                                           <Font size="18.0" />
                                        </font>
                                     </TextField>
-                                    <TextField fx:id="t_ano" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                                    <TextField fx:id="t_ano" GridPane.columnIndex="3" GridPane.rowIndex="2">
                                        <GridPane.margin>
                                           <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                                        </GridPane.margin>
@@ -167,7 +167,7 @@
                                           <Font size="18.0" />
                                        </font>
                                     </TextField>
-                                    <TextField fx:id="t_status" GridPane.columnIndex="5" GridPane.rowIndex="3">
+                                    <TextField fx:id="t_status" GridPane.columnIndex="5" GridPane.rowIndex="2">
                                        <GridPane.margin>
                                           <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                                        </GridPane.margin>
@@ -175,7 +175,7 @@
                                           <Font size="18.0" />
                                        </font>
                                     </TextField>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo:" GridPane.rowIndex="4">
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo:" GridPane.rowIndex="3">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -183,12 +183,12 @@
                                           <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                                        </GridPane.margin>
                                     </Text>
-                                    <ComboBox fx:id="c_tipo" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                    <ComboBox fx:id="c_tipo" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                        <GridPane.margin>
                                           <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                                        </GridPane.margin>
                                     </ComboBox>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Local:" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Local:" GridPane.columnIndex="2" GridPane.rowIndex="3">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -196,29 +196,68 @@
                                           <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                                        </GridPane.margin>
                                     </Text>
-                                    <ComboBox fx:id="c_local" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                                    <ComboBox fx:id="c_local" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
                                        <GridPane.margin>
                                           <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                                        </GridPane.margin>
                                     </ComboBox>
+                                    <ListView fx:id="list_autoresselecionar" GridPane.columnSpan="2" GridPane.rowIndex="5" GridPane.rowSpan="3">
+                                       <GridPane.margin>
+                                          <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                       </GridPane.margin>
+                                    </ListView>
+                                    <ListView fx:id="list_autores_selecionados" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="5" GridPane.rowSpan="3">
+                                       <GridPane.margin>
+                                          <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                       </GridPane.margin>
+                                    </ListView>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Autores:" GridPane.rowIndex="4">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField fx:id="t_busca_autores" onKeyTyped="#on_listaautores" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                       <GridPane.margin>
+                                          <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                       </GridPane.margin>
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </TextField>
+                                    <ImageView fx:id="b_add_autores" fitHeight="42.0" fitWidth="42.0" onMousePressed="#on_selecionaautores" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+                                       <image>
+                                          <Image url="@../util/direita.png" />
+                                       </image>
+                                       <GridPane.margin>
+                                          <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                       </GridPane.margin>
+                                    </ImageView>
+                                    <ImageView fx:id="b_rmv_autores" fitHeight="42.0" fitWidth="42.0" onMouseClicked="#on_removeautores" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="7">
+                                       <image>
+                                          <Image url="@../util/esquerda.png" />
+                                       </image>
+                                       <GridPane.margin>
+                                          <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                       </GridPane.margin>
+                                    </ImageView>
                                  </children>
                                  <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="129.0" minWidth="129.0" prefWidth="129.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="129.0" minWidth="129.0" prefWidth="129.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="129.0" minWidth="129.0" prefWidth="129.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="129.0" minWidth="129.0" prefWidth="129.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="129.0" minWidth="129.0" prefWidth="129.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="129.0" minWidth="129.0" prefWidth="129.0" />
                                  </columnConstraints>
                                  <rowConstraints>
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="46.75" minHeight="46.75" prefHeight="46.75" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="46.75" minHeight="46.75" prefHeight="46.75" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="46.75" minHeight="46.75" prefHeight="46.75" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="46.75" minHeight="46.75" prefHeight="46.75" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="46.75" minHeight="46.75" prefHeight="46.75" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="46.75" minHeight="46.75" prefHeight="46.75" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="46.75" minHeight="46.75" prefHeight="46.75" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="46.75" minHeight="46.75" prefHeight="46.75" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <padding>
                                     <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
@@ -260,7 +299,7 @@
                                         <Button fx:id="b_busca" layoutX="769.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#on_buscar" text="&gt;&gt;" />
                                         <ScrollPane layoutX="14.0" layoutY="60.0" prefHeight="327.0" prefWidth="789.0">
                                             <content>
-                                                <ListView fx:id="list_prateleira" prefHeight="326.0" prefWidth="787.0" />
+                                                <ListView fx:id="list_acervos" prefHeight="326.0" prefWidth="787.0" />
                                             </content>
                                         </ScrollPane>
                                     </children>
