@@ -27,7 +27,7 @@ public class Prateleira {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "idPrateleira")
     private int idPrateleira;
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne//(fetch = FetchType.EAGER)
     @JoinColumn(name = "idEstante", nullable = false)
     private Estante idEstante;
     @Column(name = "codigoPE")

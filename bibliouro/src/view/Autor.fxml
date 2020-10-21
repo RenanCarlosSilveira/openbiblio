@@ -41,7 +41,7 @@
                         </Text>
                         <Button fx:id="b_back" layoutX="156.0" layoutY="468.0" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onMouseClicked="#closeview" prefHeight="30.0" prefWidth="30.0" style="-fx-background-image: util\configuracao.png;">
                             <graphic>
-                                <ImageView fitHeight="38.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
                                         <Image url="@../util/volte.png" />
                                     </image>
@@ -168,7 +168,7 @@
                                         <Button fx:id="b_busca" layoutX="769.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#on_buscar" text="&gt;&gt;" />
                                         <ScrollPane layoutX="14.0" layoutY="60.0" prefHeight="327.0" prefWidth="789.0">
                                             <content>
-                                                <ListView fx:id="list_autor" prefHeight="326.0" prefWidth="787.0" />
+                                                <ListView fx:id="list_autor" prefHeight="326.0" prefWidth="787.0" stylesheets="@../util/styles.css" />
                                             </content>
                                         </ScrollPane>
                                     </children>

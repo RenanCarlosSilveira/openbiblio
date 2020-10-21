@@ -5,18 +5,22 @@
  */
 package controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javax.swing.JOptionPane;
 import model.Acervo;
 import model.Autor;
@@ -93,10 +97,17 @@ public class AutorController implements Initializable {
 
     @FXML
     private void on_salvar(MouseEvent event
-    ) {
+    ) throws IOException {
         if (t_id.getText().equals(null) || t_id.getText().equals("")) {
             if ((t_nome.getText().equals(null) || t_nome.getText().equals(null)) || (t_nome.getText().equals("") || t_nome.getText().equals(""))) {
-                JOptionPane.showMessageDialog(null, "Preencha as informações obrigatorias (Nome)", "", JOptionPane.INFORMATION_MESSAGE);
+                //JOptionPane.showMessageDialog(null, "Preencha as informações obrigatorias (Nome)", "", JOptionPane.INFORMATION_MESSAGE);
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Mensagem.fxml"));
+                Stage stage = new Stage(StageStyle.DECORATED);
+                stage.setScene(new Scene(loader.load()));
+                MensagemController controller = loader.getController();
+                controller.initData("Preencha as informações obrigatorias (Nome)", "A");
+                stage.initStyle(StageStyle.UNDECORATED);
+                stage.show();
             } else {
                 AutorDao dao = new AutorDao();
                 Autor autor = new Autor();
@@ -158,7 +169,7 @@ public class AutorController implements Initializable {
     }
 
     @FXML
-    private void on_editar(MouseEvent event) {
+    private void on_editar(MouseEvent event) throws IOException {
         if (list_autor.getSelectionModel().getSelectedItem() != null) {
             autorglobal = list_autor.getSelectionModel().getSelectedItem();
             //int index = ListViewItem.Index;
@@ -166,7 +177,7 @@ public class AutorController implements Initializable {
             this.t_id.setText(String.valueOf(autorglobal.getIdAutor()));
             this.t_nome.setText(autorglobal.getNome());
             this.t_nacionalidade.setText(autorglobal.getNacionalidade());
-           // c_estante.getSelectionModel().select(autorglobal.getIdEstante());
+            // c_estante.getSelectionModel().select(autorglobal.getIdEstante());
             t_nome.setEditable(true);
             t_nacionalidade.setEditable(true);
             b_rmv.setVisible(true);
@@ -174,7 +185,14 @@ public class AutorController implements Initializable {
             b_add.setVisible(false);
             list_autor.setItems(null);
         } else {
-            JOptionPane.showMessageDialog(null, "Selecione um registro para editar!", "", JOptionPane.INFORMATION_MESSAGE);
+            //JOptionPane.showMessageDialog(null, "Selecione um registro para editar!", "", JOptionPane.INFORMATION_MESSAGE);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Mensagem.fxml"));
+            Stage stage = new Stage(StageStyle.DECORATED);
+            stage.setScene(new Scene(loader.load()));
+            MensagemController controller = loader.getController();
+            controller.initData("Selecione um registro para editar!", "A");
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.show();
         }
     }
 

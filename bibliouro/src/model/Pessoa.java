@@ -5,7 +5,7 @@
  */
 package model;
 
-import java.sql.Date;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,7 +30,7 @@ public class Pessoa {
     @Column(name = "nome")
     private String nome;
     @Column(name = "nascimento")
-    //@Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.DATE)
     private Date nascimento;
     @Column(name = "telefone")
     private int telefone;
@@ -156,7 +156,7 @@ public class Pessoa {
 
     @Override
     public String toString() {
-        return idPessoa + " - " + nome + " - " + cpf + " Status: " + status;
+        return idPessoa + " - " + nome + "\nCPF: " + cpf +  " Status: " + status;
     }
     
     

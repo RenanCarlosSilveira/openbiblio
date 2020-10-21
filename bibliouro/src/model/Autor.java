@@ -5,15 +5,13 @@
  */
 package model;
 
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -32,14 +30,17 @@ public class Autor {
     private String nome;
     @Column(name = "nacionalidade")
     private String nacionalidade;
+    @ManyToMany(mappedBy = "idAutor")
+    List<Acervo> idAcervo;
 
     public Autor() {
     }
 
-    public Autor(int idAutor, String nome, String nacionalidade) {
+    public Autor(int idAutor, String nome, String nacionalidade, List<Acervo> idAcervo) {
         this.idAutor = idAutor;
         this.nome = nome;
         this.nacionalidade = nacionalidade;
+        this.idAcervo = idAcervo;
     }
 
     public int getIdAutor() {
@@ -66,9 +67,17 @@ public class Autor {
         this.nacionalidade = nacionalidade;
     }
 
+    public List<Acervo> getIdAcervo() {
+        return idAcervo;
+    }
+
+    public void setIdAcervo(List<Acervo> idAcervo) {
+        this.idAcervo = idAcervo;
+    }
+
     @Override
     public String toString() {
-        return nome + " - Nacionalidade: " + nacionalidade;
+        return nome + "\nNacionalidade: " + nacionalidade;
     }
 
 }

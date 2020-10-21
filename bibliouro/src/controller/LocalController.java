@@ -5,12 +5,15 @@
  */
 package controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
@@ -18,6 +21,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javax.swing.JOptionPane;
 import model.Estante;
 import model.Prateleira;
@@ -105,10 +109,17 @@ public class LocalController implements Initializable {
 
     @FXML
     private void on_salvar(MouseEvent event
-    ) {
+    ) throws IOException {
         if (t_id.getText().equals(null) || t_id.getText().equals("")) {
             if ((t_codpe.getText().equals(null) || t_codpe.getText().equals(null)) || (t_codpe.getText().equals("") || t_codpe.getText().equals(""))) {
-                JOptionPane.showMessageDialog(null, "Preencha as informações obrigatorias (Identificação)", "", JOptionPane.INFORMATION_MESSAGE);
+                //JOptionPane.showMessageDialog(null, "Preencha as informações obrigatorias (Identificação)", "", JOptionPane.INFORMATION_MESSAGE);
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Mensagem.fxml"));
+                Stage stage = new Stage(StageStyle.DECORATED);
+                stage.setScene(new Scene(loader.load()));
+                MensagemController controller = loader.getController();
+                controller.initData("Preencha as informações obrigatorias (Identificação)", "A");
+                stage.initStyle(StageStyle.UNDECORATED);
+                stage.show();
             } else {
                 LocalDao dao = new LocalDao();
                 Prateleira prateleira = new Prateleira();
@@ -162,7 +173,7 @@ public class LocalController implements Initializable {
 
     @FXML
     private void on_editar(MouseEvent event
-    ) {
+    ) throws IOException {
         if (list_prateleira.getSelectionModel().getSelectedItem() != null) {
             pratglobal = list_prateleira.getSelectionModel().getSelectedItem();
             //int index = ListViewItem.Index;
@@ -176,7 +187,14 @@ public class LocalController implements Initializable {
             b_add.setVisible(false);
             list_prateleira.setItems(null);
         } else {
-            JOptionPane.showMessageDialog(null, "Selecione um registro para editar!", "", JOptionPane.INFORMATION_MESSAGE);
+            //JOptionPane.showMessageDialog(null, "Selecione um registro para editar!", "", JOptionPane.INFORMATION_MESSAGE);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Mensagem.fxml"));
+            Stage stage = new Stage(StageStyle.DECORATED);
+            stage.setScene(new Scene(loader.load()));
+            MensagemController controller = loader.getController();
+            controller.initData("Selecione um registro para editar!", "A");
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.show();
         }
     }
 

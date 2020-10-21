@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="100.0" maxWidth="300.0" minHeight="100.0" minWidth="300.0" prefHeight="100.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MensagemController">
+   <children>
+      <Pane prefHeight="100.0" prefWidth="300.0" style="-fx-background-color: #000000;">
+         <children>
+            <Pane layoutX="2.0" layoutY="2.0" prefHeight="96.0" prefWidth="296.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <ImageView fx:id="t_img" fitHeight="60.0" fitWidth="60.0" layoutX="233.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" />
+                  <Text fx:id="t_msg" layoutX="4.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="220.0">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Button layoutX="247.0" layoutY="68.0" mnemonicParsing="false" onAction="#on_closemessage" text="OK">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

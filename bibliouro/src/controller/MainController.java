@@ -7,25 +7,20 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Random;
 import java.util.ResourceBundle;
-import javafx.animation.RotateTransition;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.util.Duration;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
@@ -65,6 +60,10 @@ public class MainController implements Initializable {
     private AnchorPane anchor;
     @FXML
     private Button b_close;
+    @FXML
+    private ImageView b_abrir;
+    @FXML
+    private ImageView b_enviar;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -164,33 +163,40 @@ public class MainController implements Initializable {
 
     @FXML
     private void on_config(MouseEvent event) throws IOException {
-        //JLabel label = new JLabel("Digite a senha:");
-        //JPasswordField jpf = new JPasswordField();
-        //JOptionPane.showConfirmDialog(null, new Object[]{label, jpf}, "Password:", JOptionPane.OK_CANCEL_OPTION);
-        //String m = new String(jpf.getPassword());
-        //if (m.equals("ouro#960523")) {
-        Stage stage = new Stage();
-        Parent myNewScene = null;
-        //stage = New (Stage) objetodatela.getScene().getWindow(); PARA ABRIR EM MESMA TELA
-        myNewScene = FXMLLoader.load(getClass().getResource("/view/Configuracao.fxml"));
-        Scene scene = new Scene(myNewScene);
-        stage.setScene(scene);
-        stage.setTitle("Configurações Administrativas");
-        stage.initStyle(StageStyle.UNDECORATED);
-        stage.show();
-        //} else {
-        // System.out.println(m);
-        //JOptionPane.showMessageDialog(null, "Senha de administrador incorreta!", "", JOptionPane.INFORMATION_MESSAGE);
-        //}
+        JLabel label = new JLabel("Digite a senha:");
+        JPasswordField jpf = new JPasswordField();
+        JOptionPane.showConfirmDialog(null, new Object[]{label, jpf}, "Password:", JOptionPane.OK_CANCEL_OPTION);
+        String m = new String(jpf.getPassword());
+        if (m.equals("ouro#960523")) {
+            Stage stage = new Stage();
+            Parent myNewScene = null;
+            //stage = New (Stage) objetodatela.getScene().getWindow(); PARA ABRIR EM MESMA TELA
+            myNewScene = FXMLLoader.load(getClass().getResource("/view/Configuracao.fxml"));
+            Scene scene = new Scene(myNewScene);
+            stage.setScene(scene);
+            stage.setTitle("Configurações Administrativas");
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.show();
+        } else {
+            //System.out.println(m);
+            //JOptionPane.showMessageDialog(null, "Senha de administrador incorreta!", "", JOptionPane.INFORMATION_MESSAGE);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Mensagem.fxml"));
+            Stage stage = new Stage(StageStyle.DECORATED);
+            stage.setScene(new Scene(loader.load()));
+            MensagemController controller = loader.getController();
+            controller.initData("Senha de administrador incorreta!", "E");
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.show();
+        }
     }
 
     void busca_unidade() {
         Unidade unidade = new Unidade();
         ConfiguracaoDao dao = new ConfiguracaoDao();
         unidade = dao.getNomeUnidade();
-        try{
+        try {
             l_base.setText(unidade.getNomeUnidade());
-        }catch(Exception e){
+        } catch (Exception e) {
             l_base.setText("NÃO DEFINIDO!");
             System.out.println(e);
         }
@@ -199,6 +205,14 @@ public class MainController implements Initializable {
     @FXML
     private void on_close(MouseEvent event) {
         System.exit(0);
+    }
+
+    @FXML
+    private void on_abrirdevolucao(MouseEvent event) {
+    }
+
+    @FXML
+    private void on_enviaremail(MouseEvent event) {
     }
 
 }

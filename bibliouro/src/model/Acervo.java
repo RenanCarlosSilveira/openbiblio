@@ -5,7 +5,6 @@
  */
 package model;
 
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -15,8 +14,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -43,17 +43,27 @@ public class Acervo {
     private int edicao;
     @Column(name = "ano")
     private int ano;
-    /*@JoinColumn(name = "idTipoAcervo", nullable = false)
-    private TipoAcervo idTipoAcervo;*/
-    /*@JoinColumn(name = "idPrateleira", nullable = false)
-    private Prateleira idPrateleira;*/
-    @ManyToOne(targetEntity = Autor.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    //@JoinColumn(name = "idTipoAcervo", nullable = false)
+    @OneToOne(targetEntity = TipoAcervo.class, cascade=CascadeType.MERGE)
+    private TipoAcervo idTipoAcervo;
+    @OneToOne(targetEntity = Prateleira.class, cascade=CascadeType.MERGE)
+    private Prateleira idPrateleira;
+    //@OneToOne(targetEntity = ItemDevolucaoCompra.class, fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+    //@ManyToOne(targetEntity = Autor.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany//(cascade = {CascadeType.ALL})
+    @JoinTable(
+            name = "acervo_autor",
+            joinColumns = {
+                @JoinColumn(name = "idAcervo")},
+            inverseJoinColumns = {
+                @JoinColumn(name = "idAutor")}
+    )
     List<Autor> idAutor;
 
     public Acervo() {
     }
 
-    public Acervo(int idAcervo, String nome, int totalexemplares, String chamada, String baixado, int edicao, int ano, /*TipoAcervo idTipoAcervo, Prateleira idPrateleira,*/ ArrayList<Autor> idAutor) {
+    public Acervo(int idAcervo, String nome, int totalexemplares, String chamada, String baixado, int edicao, int ano, TipoAcervo idTipoAcervo, Prateleira idPrateleira, List<Autor> idAutor) {
         this.idAcervo = idAcervo;
         this.nome = nome;
         this.totalexemplares = totalexemplares;
@@ -61,8 +71,18 @@ public class Acervo {
         this.baixado = baixado;
         this.edicao = edicao;
         this.ano = ano;
-        //this.idTipoAcervo = idTipoAcervo;
-        //this.idPrateleira = idPrateleira;
+        this.idTipoAcervo = idTipoAcervo;
+        this.idPrateleira = idPrateleira;
+    }
+
+    public Acervo(int idAcervo, String nome, int totalexemplares, String chamada, String baixado, int edicao, int ano, List<Autor> idAutor) {
+        this.idAcervo = idAcervo;
+        this.nome = nome;
+        this.totalexemplares = totalexemplares;
+        this.chamada = chamada;
+        this.baixado = baixado;
+        this.edicao = edicao;
+        this.ano = ano;
         this.idAutor = idAutor;
     }
 
@@ -122,20 +142,21 @@ public class Acervo {
         this.ano = ano;
     }
 
-    /*public TipoAcervo getIdTipoAcervo() {
+    public TipoAcervo getIdTipoAcervo() {
         return idTipoAcervo;
     }
 
     public void setIdTipoAcervo(TipoAcervo idTipoAcervo) {
         this.idTipoAcervo = idTipoAcervo;
-    }*/
-    /*public Prateleira getIdPrateleira() {
+    }
+
+    public Prateleira getIdPrateleira() {
         return idPrateleira;
     }
 
     public void setIdPrateleira(Prateleira idPrateleira) {
         this.idPrateleira = idPrateleira;
-    }*/
+    }
 
     public List<Autor> getIdAutor() {
         return idAutor;
@@ -147,7 +168,7 @@ public class Acervo {
 
     @Override
     public String toString() {
-        return "Acervo: " + nome + "  Ano: " + ano + " - Edicao: " + edicao + " - Tipo: " /*+ idTipoAcervo*/ + " - Local: "/* + idPrateleira*/ + " Autores: " + idAutor;
+        return "Acervo: " + nome + "  Ano: " + ano + " - Edicao: " + edicao + " - Tipo: " + idTipoAcervo + "\nLocal: " + idPrateleira + "\nAutores: " + idAutor;
     }
 
 }

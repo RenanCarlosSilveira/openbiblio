@@ -35,7 +35,7 @@
                   <Pane maxHeight="512.0" maxWidth="408.0" minHeight="512.0" minWidth="408.0" prefHeight="512.0" prefWidth="408.0" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowSpan="4">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dddbdb" height="31.0" layoutY="481.0" stroke="TRANSPARENT" strokeType="INSIDE" width="408.0" />
-                        <ListView layoutX="9.0" layoutY="56.0" prefHeight="414.0" prefWidth="388.0" />
+                        <ListView layoutX="9.0" layoutY="56.0" prefHeight="350.0" prefWidth="388.0" stylesheets="@../util/styles.css" />
                         <Text fill="#ffb200" layoutX="9.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Devoluções Atrasadas">
                            <font>
                               <Font name="System Bold" size="20.0" />
@@ -43,13 +43,23 @@
                         </Text>
                         <Button fx:id="b_close" layoutX="364.0" layoutY="13.0" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onMouseClicked="#on_close" prefHeight="30.0" prefWidth="30.0" style="-fx-background-image: util\configuracao.png;">
                            <graphic>
-                              <ImageView fitHeight="38.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../util/fechar.png" />
                                  </image>
                               </ImageView>
                            </graphic>
                         </Button>
+                        <ImageView fx:id="b_abrir" fitHeight="64.0" fitWidth="52.0" layoutX="345.0" layoutY="406.0" onMouseClicked="#on_abrirdevolucao" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../util/aberto.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="b_enviar" fitHeight="64.0" fitWidth="52.0" layoutX="9.0" layoutY="406.0" onMouseClicked="#on_enviaremail" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../util/enviar.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </Pane>
                         <Pane maxHeight="512.0" minHeight="512.0" prefHeight="512.0" prefWidth="306.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #ffab1a, #996900);" GridPane.halignment="CENTER" GridPane.rowSpan="6">
@@ -62,7 +72,7 @@
                      <children>
                                       <Button fx:id="b_config" layoutX="156.0" layoutY="468.0" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onMouseClicked="#on_config" prefHeight="30.0" prefWidth="30.0" style="-fx-background-image: util\configuracao.png;">
                            <graphic>
-                              <ImageView fitHeight="38.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../util/configuracao.png" />
                                  </image>

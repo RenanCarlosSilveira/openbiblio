@@ -5,23 +5,27 @@
  */
 package controller;
 
+import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javax.swing.JOptionPane;
 import model.Pessoa;
 import model.Unidade;
@@ -86,7 +90,7 @@ public class PessoaController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         c_termoconsulta.getSelectionModel().select(0);
     }
-    
+
     void busca_unidade() {
         Unidade unidade = new Unidade();
         ConfiguracaoDao dao = new ConfiguracaoDao();
@@ -109,7 +113,7 @@ public class PessoaController implements Initializable {
             System.out.println(e);
         }
     }
-    
+
     @FXML
     private void closeview(MouseEvent event
     ) {
@@ -120,7 +124,7 @@ public class PessoaController implements Initializable {
     }
 
     @FXML
-    private void on_buscarpessoa(MouseEvent event) {
+    private void on_buscarpessoa(MouseEvent event) throws IOException {
         if (!t_consulta.getText().equals("") || !t_consulta.getText().equals(null)) {
             if (c_termoconsulta.getSelectionModel().getSelectedIndex() == 0) {
                 //PessoaDao dao = new PessoaDao();
@@ -148,23 +152,43 @@ public class PessoaController implements Initializable {
 
             } else if (c_termoconsulta.getSelectionModel().getSelectedIndex() == 0
                     && c_termoconsulta.getSelectionModel().getSelectedIndex() == 1) {
-                JOptionPane.showMessageDialog(null, "Selecione o filtro!", "", JOptionPane.INFORMATION_MESSAGE);
+                //JOptionPane.showMessageDialog(null, "Selecione o filtro!", "", JOptionPane.INFORMATION_MESSAGE);
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Mensagem.fxml"));
+                Stage stage = new Stage(StageStyle.DECORATED);
+                stage.setScene(new Scene(loader.load()));
+                MensagemController controller = loader.getController();
+                controller.initData("Selecione o filtro!", "A");
+                stage.initStyle(StageStyle.UNDECORATED);
+                stage.show();
             }
             System.out.println(c_termoconsulta.getSelectionModel().getSelectedIndex());
 
         } else {
-            JOptionPane.showMessageDialog(null, "Digite o termo de Pesquisa!", "", JOptionPane.INFORMATION_MESSAGE);
+            //JOptionPane.showMessageDialog(null, "Digite o termo de Pesquisa!", "", JOptionPane.INFORMATION_MESSAGE);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Mensagem.fxml"));
+            Stage stage = new Stage(StageStyle.DECORATED);
+            stage.setScene(new Scene(loader.load()));
+            MensagemController controller = loader.getController();
+            controller.initData("Digite o termo de Pesquisa!", "A");
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.show();
         }
 
         t_consulta.setText("");
     }
 
     @FXML
-    private void on_salvar(MouseEvent event
-    ) {
+    private void on_salvar(MouseEvent event) throws IOException {
         if (t_id.getText().equals(null) || t_id.getText().equals("")) {
             if ((t_nome.getText().equals(null) || t_cpf.getText().equals(null)) || (t_nome.getText().equals("") || t_cpf.getText().equals(""))) {
-                JOptionPane.showMessageDialog(null, "Preencha as informações obrigatorias (nome e cpf)", "", JOptionPane.INFORMATION_MESSAGE);
+                //JOptionPane.showMessageDialog(null, "Preencha as informações obrigatorias (nome e cpf)", "", JOptionPane.INFORMATION_MESSAGE);
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Mensagem.fxml"));
+                Stage stage = new Stage(StageStyle.DECORATED);
+                stage.setScene(new Scene(loader.load()));
+                MensagemController controller = loader.getController();
+                controller.initData("Preencha as informações obrigatorias (nome e cpf)", "A");
+                stage.initStyle(StageStyle.UNDECORATED);
+                stage.show();
             } else {
                 //PessoaDao dao = new PessoaDao();
                 Pessoa pessoa = new Pessoa();
@@ -173,7 +197,7 @@ public class PessoaController implements Initializable {
                 pessoa.setNome(t_nome.getText());
                 pessoa.setEmail(t_email.getText());
                 pessoa.setTelefone(Integer.valueOf(t_telefone.getText()));
-                //pessoa.setNascimento(t_nascimento.());
+                pessoa.setNascimento(Date.valueOf(t_nascimento.getValue()));
                 pessoa.setRua(t_rua.getText());
                 pessoa.setBairro(t_bairro.getText());
                 pessoa.setNumero(t_numero.getText());
@@ -189,7 +213,7 @@ public class PessoaController implements Initializable {
             this.pesglobal.setNome(t_nome.getText());
             this.pesglobal.setEmail(t_email.getText());
             this.pesglobal.setTelefone(Integer.valueOf(t_telefone.getText()));
-            //pessoa.setNascimento(t_nascimento.());
+            this.pesglobal.setNascimento(Date.valueOf(t_nascimento.getValue()));
             this.pesglobal.setRua(t_rua.getText());
             this.pesglobal.setBairro(t_bairro.getText());
             this.pesglobal.setNumero(t_numero.getText());
@@ -208,6 +232,7 @@ public class PessoaController implements Initializable {
         t_bairro.setText("");
         t_rua.setText("");
         t_numero.setText("");
+        t_nascimento.setValue(null);
         t_matricula.setEditable(false);
         t_nome.setEditable(false);
         t_nascimento.setEditable(false);
@@ -237,6 +262,7 @@ public class PessoaController implements Initializable {
             t_bairro.setText("");
             t_rua.setText("");
             t_numero.setText("");
+            t_nascimento.setValue(null);
             t_matricula.setEditable(false);
             t_nome.setEditable(false);
             t_nascimento.setEditable(false);
@@ -274,7 +300,7 @@ public class PessoaController implements Initializable {
     }
 
     @FXML
-    private void on_editar(MouseEvent event) {
+    private void on_editar(MouseEvent event) throws IOException {
         if (list_pessoas.getSelectionModel().getSelectedItem() != null) {
             pesglobal = list_pessoas.getSelectionModel().getSelectedItem();
             //int index = ListViewItem.Index;
@@ -284,7 +310,9 @@ public class PessoaController implements Initializable {
             t_email.setText(pesglobal.getEmail());
             t_id.setText(String.valueOf(pesglobal.getIdPessoa()));
             t_matricula.setText(String.valueOf(pesglobal.getMatricula()));
-            //t_nascimento.setText(pesglobal.getNome());
+            //LocalDate localDate = Date.valueOf(pesglobal.getNascimento()).toLocalDate();
+            LocalDate localDate = Date.valueOf(String.valueOf(pesglobal.getNascimento())).toLocalDate().plusDays(1); //+1 é gambiarra, ver futuramente como tratar, pois esta trazendo certo do banco, mas mostrando incorreto no componente com -1 dia
+            t_nascimento.setValue(localDate);
             t_numero.setText(pesglobal.getNumero());
             t_rua.setText(pesglobal.getRua());
             t_telefone.setText(String.valueOf(pesglobal.getTelefone()));
@@ -303,7 +331,14 @@ public class PessoaController implements Initializable {
             b_add.setVisible(false);
             list_pessoas.setItems(null);
         } else {
-            JOptionPane.showMessageDialog(null, "Selecione um registro para editar!", "", JOptionPane.INFORMATION_MESSAGE);
+            //JOptionPane.showMessageDialog(null, "Selecione um registro para editar!", "", JOptionPane.INFORMATION_MESSAGE);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Mensagem.fxml"));
+            Stage stage = new Stage(StageStyle.DECORATED);
+            stage.setScene(new Scene(loader.load()));
+            MensagemController controller = loader.getController();
+            controller.initData("Selecione um registro para editar!", "A");
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.show();
         }
     }
 }

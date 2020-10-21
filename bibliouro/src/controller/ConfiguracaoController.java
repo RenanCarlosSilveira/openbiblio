@@ -5,18 +5,22 @@
  */
 package controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javax.swing.JOptionPane;
 import model.Estante;
 import model.TipoAcervo;
@@ -67,7 +71,7 @@ public class ConfiguracaoController implements Initializable {
     }
 
     @FXML
-    private void on_salvarestante(ActionEvent event) {
+    private void on_salvarestante(ActionEvent event) throws IOException {
         if (!t_estante.getText().equals("")) {
             ConfiguracaoDao dao = new ConfiguracaoDao();
             Estante estante = new Estante();
@@ -76,12 +80,19 @@ public class ConfiguracaoController implements Initializable {
             System.out.println("Salvo!");
             t_estante.setText("");
         } else {
-            JOptionPane.showMessageDialog(null, "Favor preencher as informações!", "Bibliouro", JOptionPane.INFORMATION_MESSAGE);
+            //JOptionPane.showMessageDialog(null, "Favor preencher as informações!", "Bibliouro", JOptionPane.INFORMATION_MESSAGE);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Mensagem.fxml"));
+            Stage stage = new Stage(StageStyle.DECORATED);
+            stage.setScene(new Scene(loader.load()));
+            MensagemController controller = loader.getController();
+            controller.initData("Favor preencher as informações!", "A");
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.show();
         }
     }
 
     @FXML
-    private void on_salvarunidade(ActionEvent event) {
+    private void on_salvarunidade(ActionEvent event) throws IOException {
         if (!t_base.getText().equals("")) {
             //ConfiguracaoDao dao = new ConfiguracaoDao();
             Unidade unidade2 = new Unidade();
@@ -89,7 +100,14 @@ public class ConfiguracaoController implements Initializable {
             dao.salvar(unidade2);
             System.out.println("Salvo!");
         } else {
-            JOptionPane.showMessageDialog(null, "Favor preencher as informações!", "Bibliouro", JOptionPane.INFORMATION_MESSAGE);
+            //JOptionPane.showMessageDialog(null, "Favor preencher as informações!", "Bibliouro", JOptionPane.INFORMATION_MESSAGE);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Mensagem.fxml"));
+            Stage stage = new Stage(StageStyle.DECORATED);
+            stage.setScene(new Scene(loader.load()));
+            MensagemController controller = loader.getController();
+            controller.initData("Favor preencher as informações!", "A");
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.show();
         }
     }
 
@@ -129,7 +147,7 @@ public class ConfiguracaoController implements Initializable {
     }
 
     @FXML
-    private void on_salvartipo(ActionEvent event) {
+    private void on_salvartipo(ActionEvent event) throws IOException {
         if (!t_nometipo.equals(null) || t_nometipo.equals("")) {
             ConfiguracaoDao dao = new ConfiguracaoDao();
             TipoAcervo tipo = new TipoAcervo();
@@ -137,7 +155,14 @@ public class ConfiguracaoController implements Initializable {
             dao.salvar(tipo);
             System.out.println("Salvo!");
         } else {
-            JOptionPane.showMessageDialog(null, "Favor preencher as informações!", "Bibliouro", JOptionPane.INFORMATION_MESSAGE);
+            //JOptionPane.showMessageDialog(null, "Favor preencher as informações!", "Bibliouro", JOptionPane.INFORMATION_MESSAGE);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Mensagem.fxml"));
+            Stage stage = new Stage(StageStyle.DECORATED);
+            stage.setScene(new Scene(loader.load()));
+            MensagemController controller = loader.getController();
+            controller.initData("Favor preencher as informações!", "A");
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.show();
         }
     }
 }
