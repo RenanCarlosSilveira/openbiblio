@@ -52,7 +52,7 @@ public class Acervo {
     private Prateleira idPrateleira;
     //@OneToOne(targetEntity = ItemDevolucaoCompra.class, fetch=FetchType.EAGER, cascade=CascadeType.ALL)
     //@ManyToOne(targetEntity = Autor.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @ManyToMany//(cascade = {CascadeType.ALL})
+    @ManyToMany
     @JoinTable(
             name = "acervo_autor",
             joinColumns = {

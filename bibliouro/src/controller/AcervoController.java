@@ -279,7 +279,7 @@ public class AcervoController implements Initializable {
 
     @FXML
     private void on_editar(MouseEvent event
-    ) {
+    ) throws IOException {
         if (list_acervos.getSelectionModel().getSelectedItem() != null) {
             acervoglobal = list_acervos.getSelectionModel().getSelectedItem();
             //int index = ListViewItem.Index;
@@ -302,7 +302,13 @@ public class AcervoController implements Initializable {
             b_add.setVisible(false);
             list_acervos.setItems(null);
         } else {
-            JOptionPane.showMessageDialog(null, "Selecione um registro para editar!", "", JOptionPane.INFORMATION_MESSAGE);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Mensagem.fxml"));
+            Stage stage = new Stage(StageStyle.DECORATED);
+            stage.setScene(new Scene(loader.load()));
+            MensagemController controller = loader.getController();
+            controller.initData("Selecione um registro para editar!", "A");
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.show();
         }
         b_rmv.setVisible(true);
         b_save.setVisible(true);
