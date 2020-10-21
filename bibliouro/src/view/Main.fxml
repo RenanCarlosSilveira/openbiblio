@@ -60,6 +60,11 @@
                               <Image url="@../util/enviar.png" />
                            </image>
                         </ImageView>
+                        <ImageView fx:id="b_atualizar" fitHeight="64.0" fitWidth="52.0" layoutX="178.0" layoutY="406.0" onMouseClicked="#on_atualizardevolucao" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../util/refresh.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </Pane>
                         <Pane maxHeight="512.0" minHeight="512.0" prefHeight="512.0" prefWidth="306.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #ffab1a, #996900);" GridPane.halignment="CENTER" GridPane.rowSpan="6">

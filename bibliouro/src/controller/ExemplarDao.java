@@ -14,14 +14,14 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import model.Acervo;
+import model.Exemplar;
 import util.HibernateJPAUtil;
 
 /**
  *
  * @author renan
  */
-class AcervoDao {
+class ExemplarDao {
 
     private EntityManager manager = new HibernateJPAUtil().getEntityManager();
 
@@ -60,15 +60,15 @@ class AcervoDao {
         }
     }
 
-    public List<Acervo> getAcervosNome(String nome) {
+    public List<Exemplar> getExemplaresEtiqueta(String etiqueta) {
         CriteriaBuilder builder = this.getManager().getCriteriaBuilder();
-        CriteriaQuery<Acervo> query = builder.createQuery(Acervo.class);
-        Root<Acervo> root = query.from(Acervo.class);
+        CriteriaQuery<Exemplar> query = builder.createQuery(Exemplar.class);
+        Root<Exemplar> root = query.from(Exemplar.class);
         try {
-            Path<String> nomePath = root.<String>get("nome");
-            Predicate nomeIgual = builder.like(nomePath, "%" + nome + "%");
+            Path<String> nomePath = root.<String>get("etiqueta");
+            Predicate nomeIgual = builder.like(nomePath, "%" + etiqueta + "%");
             query.where(nomeIgual);
-            TypedQuery<Acervo> typedQuery = this.getManager().createQuery(query);
+            TypedQuery<Exemplar> typedQuery = this.getManager().createQuery(query);
             return typedQuery.getResultList();
         } catch (NoResultException e) {
             System.out.println(e);

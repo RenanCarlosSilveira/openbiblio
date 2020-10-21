@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import java.io.IOException;
@@ -26,10 +21,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import model.Unidade;
 
-/**
- *
- * @author toor
- */
 public class MainController implements Initializable {
 
     @FXML
@@ -64,10 +55,24 @@ public class MainController implements Initializable {
     private ImageView b_abrir;
     @FXML
     private ImageView b_enviar;
+    @FXML
+    private ImageView b_atualizar;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         busca_unidade();
+    }
+
+    void busca_unidade() {
+        Unidade unidade = new Unidade();
+        ConfiguracaoDao dao = new ConfiguracaoDao();
+        unidade = dao.getNomeUnidade();
+        try {
+            l_base.setText(unidade.getNomeUnidade());
+        } catch (Exception e) {
+            l_base.setText("NÃO DEFINIDO!");
+            System.out.println(e);
+        }
     }
 
     @FXML
@@ -190,18 +195,6 @@ public class MainController implements Initializable {
         }
     }
 
-    void busca_unidade() {
-        Unidade unidade = new Unidade();
-        ConfiguracaoDao dao = new ConfiguracaoDao();
-        unidade = dao.getNomeUnidade();
-        try {
-            l_base.setText(unidade.getNomeUnidade());
-        } catch (Exception e) {
-            l_base.setText("NÃO DEFINIDO!");
-            System.out.println(e);
-        }
-    }
-
     @FXML
     private void on_close(MouseEvent event) {
         System.exit(0);
@@ -213,6 +206,10 @@ public class MainController implements Initializable {
 
     @FXML
     private void on_enviaremail(MouseEvent event) {
+    }
+
+    @FXML
+    private void on_atualizardevolucao(MouseEvent event) {
     }
 
 }

@@ -43,10 +43,12 @@ public class Acervo {
     private int edicao;
     @Column(name = "ano")
     private int ano;
+    @Column(name = "status")
+    private String status;
     //@JoinColumn(name = "idTipoAcervo", nullable = false)
-    @OneToOne(targetEntity = TipoAcervo.class, cascade=CascadeType.MERGE)
+    @OneToOne(targetEntity = TipoAcervo.class, cascade = CascadeType.MERGE)
     private TipoAcervo idTipoAcervo;
-    @OneToOne(targetEntity = Prateleira.class, cascade=CascadeType.MERGE)
+    @OneToOne(targetEntity = Prateleira.class, cascade = CascadeType.MERGE)
     private Prateleira idPrateleira;
     //@OneToOne(targetEntity = ItemDevolucaoCompra.class, fetch=FetchType.EAGER, cascade=CascadeType.ALL)
     //@ManyToOne(targetEntity = Autor.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -63,7 +65,7 @@ public class Acervo {
     public Acervo() {
     }
 
-    public Acervo(int idAcervo, String nome, int totalexemplares, String chamada, String baixado, int edicao, int ano, TipoAcervo idTipoAcervo, Prateleira idPrateleira, List<Autor> idAutor) {
+    public Acervo(int idAcervo, String nome, int totalexemplares, String chamada, String baixado, int edicao, int ano, String status, TipoAcervo idTipoAcervo, Prateleira idPrateleira, List<Autor> idAutor) {
         this.idAcervo = idAcervo;
         this.nome = nome;
         this.totalexemplares = totalexemplares;
@@ -71,19 +73,18 @@ public class Acervo {
         this.baixado = baixado;
         this.edicao = edicao;
         this.ano = ano;
+        this.status = status;
         this.idTipoAcervo = idTipoAcervo;
         this.idPrateleira = idPrateleira;
+        this.idAutor = idAutor;
     }
 
-    public Acervo(int idAcervo, String nome, int totalexemplares, String chamada, String baixado, int edicao, int ano, List<Autor> idAutor) {
-        this.idAcervo = idAcervo;
-        this.nome = nome;
-        this.totalexemplares = totalexemplares;
-        this.chamada = chamada;
-        this.baixado = baixado;
-        this.edicao = edicao;
-        this.ano = ano;
-        this.idAutor = idAutor;
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public int getIdAcervo() {
@@ -168,7 +169,7 @@ public class Acervo {
 
     @Override
     public String toString() {
-        return "Acervo: " + nome + "  Ano: " + ano + " - Edicao: " + edicao + " - Tipo: " + idTipoAcervo + "\nLocal: " + idPrateleira + "\nAutores: " + idAutor;
+        return "▒ " + nome + " ▒\nAno: " + ano + " - Edicao: " + edicao + " - Tipo: " + idTipoAcervo + "\nLocal: " + idPrateleira + "\nAutores: " + idAutor;
     }
 
 }

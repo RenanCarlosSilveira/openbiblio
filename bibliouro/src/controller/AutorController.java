@@ -84,7 +84,6 @@ public class AutorController implements Initializable {
             list_autor.setItems(null);
             for (Autor c : dao.getAutores(t_consulta.getText())) {
                 autores.add(c);
-                System.out.println(autores);
                 list_autor.setItems(autores);
             }
         } catch (Exception e) {

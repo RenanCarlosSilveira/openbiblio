@@ -44,7 +44,6 @@ public class AcervoController implements Initializable {
     ObservableList<Autor> autores = FXCollections.observableArrayList();
     ObservableList<Autor> autoresselecionados = FXCollections.observableArrayList();
     AutorDao daoautor = new AutorDao();
-    EntityManager manager = new HibernateJPAUtil().getEntityManager();
 
     @FXML
     private TextField t_consulta;
@@ -90,7 +89,7 @@ public class AcervoController implements Initializable {
     @FXML
     private ListView<Acervo> list_acervos;
     @FXML
-    private ComboBox<?> c_status;
+    private ComboBox<String> c_status;
 
     /**
      * Initializes the controller class.
@@ -100,6 +99,23 @@ public class AcervoController implements Initializable {
         populacombo();
         list_autores_selecionados.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         list_autoresselecionar.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+    }
+
+    public void populacombo() {
+        ObservableList<Prateleira> prateleiras = FXCollections.observableArrayList();
+        LocalDao dao = new LocalDao();
+        for (Prateleira c : dao.getLocais("")) {
+            prateleiras.add(c);
+            System.out.println(prateleiras);
+            c_local.setItems(prateleiras);
+        }
+        ObservableList<TipoAcervo> tipos = FXCollections.observableArrayList();
+        ConfiguracaoDao dao2 = new ConfiguracaoDao();
+        for (TipoAcervo c : dao2.getTipoAcervo()) {
+            tipos.add(c);
+            System.out.println(tipos);
+            c_tipo.setItems(tipos);
+        }
     }
 
     @FXML
@@ -142,9 +158,7 @@ public class AcervoController implements Initializable {
                 controller.initData("Preencha as informações obrigatorias (Nome, Chamada, Exemplares, Autores, Status)", "A");
                 stage.initStyle(StageStyle.UNDECORATED);
                 stage.show();
-
             } else {
-                //AcervoDao dao2 = new AcervoDao();
                 Acervo acervo = new Acervo();
                 AcervoDao dao2 = new AcervoDao();
                 acervo.setNome(t_nomeacervo.getText());
@@ -152,42 +166,40 @@ public class AcervoController implements Initializable {
                 acervo.setChamada(t_chamada.getText());
                 acervo.setEdicao(Integer.valueOf(t_edicao.getText()));
                 acervo.setTotalexemplares(Integer.valueOf(t_exemplares.getText()));
+                acervo.setStatus(c_status.getValue());
                 //acervo.setIdTipoAcervo(c_tipo.getSelectionModel().getSelectedItem());
                 acervo.setIdTipoAcervo(c_tipo.getValue());
                 //acervo.setIdPrateleira(c_local.getSelectionModel().getSelectedItem());
                 acervo.setIdPrateleira(c_local.getValue());
                 //ObservableList<Autor> autores = FXCollections.observableArrayList();
                 //autores.addAll(this.autoresselecionados);
-                for (Autor role : autoresselecionados) {
-                    System.out.println("ENTROU");
+                /*for (Autor role : autoresselecionados) {
                     Autor attached = this.dao.getManager().getReference(Autor.class, role.getIdAutor());
                     autores.add(attached);
-                    System.out.println(attached.toString());
-                    System.out.println("SAIU");
-                }
-                acervo.setIdAutor(autores);
-                //System.out.println(autoresselecionados);
-
+                }*/
+                acervo.setIdAutor(this.autoresselecionados);
                 dao2.salvar(acervo);
                 System.out.println("SAVE");
             }
-        }
-        /*else {
-            this.autorglobal.setIdAutor(Integer.valueOf(t_id.getText()));
-            this.autorglobal.setNome(t_nome.getText());
-            this.autorglobal.setNacionalidade(t_nacionalidade.getText());
-            Acervo acv = new Acervo();
-            //acv = list_autor.getSelectionModel().getSelectedItem();
-            this.dao.salvar(this.autorglobal);
+        } else {
+            acervoglobal.setNome(t_nomeacervo.getText());
+            acervoglobal.setAno(Integer.valueOf(t_ano.getText()));
+            acervoglobal.setChamada(t_chamada.getText());
+            acervoglobal.setEdicao(Integer.valueOf(t_edicao.getText()));
+            acervoglobal.setTotalexemplares(Integer.valueOf(t_exemplares.getText()));
+            acervoglobal.setStatus(c_status.getValue());
+            acervoglobal.setIdTipoAcervo(c_tipo.getValue());
+            acervoglobal.setIdPrateleira(c_local.getValue());
+            acervoglobal.setIdAutor(this.autoresselecionados);
+            dao.salvar(acervoglobal);
             System.out.println("UPDT");
-        }*/
+        }
         t_ano.setText("");
         t_chamada.setText("");
         t_edicao.setText("");
         t_exemplares.setText("");
         t_id.setText("");
         t_nomeacervo.setText("");
-        c_status.getSelectionModel().select(null);
         c_local.getSelectionModel().select(null);
         c_tipo.getSelectionModel().select(null);
         c_status.getSelectionModel().select(null);
@@ -207,41 +219,41 @@ public class AcervoController implements Initializable {
     @FXML
     private void on_remover(MouseEvent event
     ) {
-        /*int reply = JOptionPane.showConfirmDialog(null, "Certeza que deseja remover?", "Excluir", JOptionPane.YES_NO_OPTION);
+        int reply = JOptionPane.showConfirmDialog(null, "Certeza que deseja remover?", "Excluir", JOptionPane.YES_NO_OPTION);
         if (reply == JOptionPane.YES_OPTION) {
-            dao.remover(this.autorglobal);
-        t_ano.setText("");
-        t_chamada.setText("");
-        t_edicao.setText("");
-        t_exemplares.setText("");
-        t_id.setText("");
-        t_nomeacervo.setText("");
-        t_status.setText("");
-        c_local.getSelectionModel().select(null);
-        c_tipo.getSelectionModel().select(null);
-        list_autores_selecionados.setItems(null);
-        list_autoresselecionar.setItems(null);
-        t_ano.setEditable(false);
-        t_chamada.setEditable(false);
-        t_edicao.setEditable(false);
-        t_exemplares.setEditable(false);
-        t_id.setEditable(false);
-        t_nomeacervo.setEditable(false);
-        t_status.setEditable(false);
-        b_rmv.setVisible(false);
-        b_add.setVisible(true);
-        b_save.setVisible(false);
+            dao.remover(this.acervoglobal);
+            t_ano.setText("");
+            t_chamada.setText("");
+            t_edicao.setText("");
+            t_exemplares.setText("");
+            t_id.setText("");
+            t_nomeacervo.setText("");
+            c_status.getSelectionModel().select(null);
+            c_local.getSelectionModel().select(null);
+            c_tipo.getSelectionModel().select(null);
+            list_autores_selecionados.setItems(null);
+            list_autoresselecionar.setItems(null);
+            t_ano.setEditable(false);
+            t_chamada.setEditable(false);
+            t_edicao.setEditable(false);
+            t_exemplares.setEditable(false);
+            t_id.setEditable(false);
+            t_nomeacervo.setEditable(false);
+            b_rmv.setVisible(false);
+            b_add.setVisible(true);
+            b_save.setVisible(false);
             System.out.println("RMV");
         } else {
             System.out.println("NO RMV");
-        }*/
-        b_rmv.setVisible(false);
-        b_add.setVisible(true);
-        b_save.setVisible(false);
+            b_rmv.setVisible(false);
+            b_add.setVisible(true);
+            b_save.setVisible(false);
+        }
     }
 
     @FXML
-    private void on_add(MouseEvent event) {
+    private void on_add(MouseEvent event
+    ) {
         System.out.println("ADD");
         t_ano.setText("");
         t_chamada.setText("");
@@ -266,45 +278,36 @@ public class AcervoController implements Initializable {
     }
 
     @FXML
-    private void on_editar(MouseEvent event) {
-        /*if (list.getSelectionModel().getSelectedItem() != null) {
-           // autorglobal = list_autor.getSelectionModel().getSelectedItem();
+    private void on_editar(MouseEvent event
+    ) {
+        if (list_acervos.getSelectionModel().getSelectedItem() != null) {
+            acervoglobal = list_acervos.getSelectionModel().getSelectedItem();
             //int index = ListViewItem.Index;
-            //System.out.println(autorglobal);
-            //this.t_id.setText(String.valueOf(autorglobal.getIdAutor()));
-            //this.t_nome.setText(autorglobal.getNome());
-            //this.t_nacionalidade.setText(autorglobal.getNacionalidade());
-            // c_estante.getSelectionModel().select(autorglobal.getIdEstante());
-            t_nome.setEditable(true);
-            t_nacionalidade.setEditable(true);
+            System.out.println(acervoglobal);
+            this.t_id.setText(String.valueOf(acervoglobal.getIdAcervo()));
+            this.t_nomeacervo.setText(acervoglobal.getNome());
+            this.t_chamada.setText(acervoglobal.getChamada());
+            this.t_exemplares.setText(String.valueOf(acervoglobal.getTotalexemplares()));
+            this.t_edicao.setText(String.valueOf(acervoglobal.getEdicao()));
+            this.t_ano.setText(String.valueOf(acervoglobal.getAno()));
+            //this.c_status.getSelectionModel().select(acervoglobal.get());
+            this.c_status.getSelectionModel().select(acervoglobal.getStatus());
+            this.c_tipo.getSelectionModel().select(acervoglobal.getIdTipoAcervo());
+            this.c_local.getSelectionModel().select(acervoglobal.getIdPrateleira());
+            this.autoresselecionados.clear();
+            this.autoresselecionados.addAll(this.acervoglobal.getIdAutor());
+            this.list_autores_selecionados.setItems(this.autoresselecionados);
             b_rmv.setVisible(true);
             b_save.setVisible(true);
             b_add.setVisible(false);
-            list_autor.setItems(null);
+            list_acervos.setItems(null);
         } else {
             JOptionPane.showMessageDialog(null, "Selecione um registro para editar!", "", JOptionPane.INFORMATION_MESSAGE);
-        }*/
+        }
         b_rmv.setVisible(true);
         b_save.setVisible(true);
         b_add.setVisible(false);
         list_acervos.setItems(null);
-    }
-
-    public void populacombo() {
-        ObservableList<Prateleira> prateleiras = FXCollections.observableArrayList();
-        LocalDao dao = new LocalDao();
-        for (Prateleira c : dao.getLocais("")) {
-            prateleiras.add(c);
-            System.out.println(prateleiras);
-            c_local.setItems(prateleiras);
-        }
-        ObservableList<TipoAcervo> tipos = FXCollections.observableArrayList();
-        ConfiguracaoDao dao2 = new ConfiguracaoDao();
-        for (TipoAcervo c : dao2.getTipoAcervo()) {
-            tipos.add(c);
-            System.out.println(tipos);
-            c_tipo.setItems(tipos);
-        }
     }
 
     @FXML
