@@ -155,7 +155,16 @@ public class MainController implements Initializable {
     }
 
     @FXML
-    private void open_viewreserva(ActionEvent event) {
+    private void open_viewreserva(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        Parent myNewScene = null;
+        //stage = New (Stage) objetodatela.getScene().getWindow(); PARA ABRIR EM MESMA TELA
+        myNewScene = FXMLLoader.load(getClass().getResource("/view/Emprestimo.fxml"));
+        Scene scene = new Scene(myNewScene);
+        stage.setScene(scene);
+        stage.setTitle("Cadastro de Autor");
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.show();
     }
 
     @FXML

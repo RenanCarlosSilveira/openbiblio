@@ -27,7 +27,7 @@ public class Exemplar {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "idExemplar")
     private int idExemplar;
-    @ManyToOne(targetEntity = Acervo.class, cascade = CascadeType.ALL)
+    @ManyToOne(targetEntity = Acervo.class, cascade = CascadeType.MERGE)
     private Acervo idAcervo;
     @Column(name = "etiqueta")
     private String etiqueta;

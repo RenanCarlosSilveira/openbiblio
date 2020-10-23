@@ -9,7 +9,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -45,21 +44,12 @@ public class Acervo {
     private int ano;
     @Column(name = "status")
     private String status;
-    //@JoinColumn(name = "idTipoAcervo", nullable = false)
     @OneToOne(targetEntity = TipoAcervo.class, cascade = CascadeType.MERGE)
     private TipoAcervo idTipoAcervo;
     @OneToOne(targetEntity = Prateleira.class, cascade = CascadeType.MERGE)
     private Prateleira idPrateleira;
-    //@OneToOne(targetEntity = ItemDevolucaoCompra.class, fetch=FetchType.EAGER, cascade=CascadeType.ALL)
-    //@ManyToOne(targetEntity = Autor.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @ManyToMany
-    @JoinTable(
-            name = "acervo_autor",
-            joinColumns = {
-                @JoinColumn(name = "idAcervo")},
-            inverseJoinColumns = {
-                @JoinColumn(name = "idAutor")}
-    )
+    @JoinTable(name = "acervo_autor", joinColumns = {@JoinColumn(name = "idAcervo")}, inverseJoinColumns = {@JoinColumn(name = "idAutor")})
     List<Autor> idAutor;
 
     public Acervo() {

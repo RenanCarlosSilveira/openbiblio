@@ -21,7 +21,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javax.swing.JOptionPane;
 import model.Estante;
 import model.TipoAcervo;
 import model.Unidade;
@@ -48,9 +47,6 @@ public class ConfiguracaoController implements Initializable {
     @FXML
     private Button b_salvarunidade;
 
-    /**
-     * Initializes the controller class.
-     */
     Unidade unidade = new Unidade();
     ConfiguracaoDao dao = new ConfiguracaoDao();
     @FXML
@@ -80,7 +76,6 @@ public class ConfiguracaoController implements Initializable {
             System.out.println("Salvo!");
             t_estante.setText("");
         } else {
-            //JOptionPane.showMessageDialog(null, "Favor preencher as informações!", "Bibliouro", JOptionPane.INFORMATION_MESSAGE);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Mensagem.fxml"));
             Stage stage = new Stage(StageStyle.DECORATED);
             stage.setScene(new Scene(loader.load()));
@@ -94,13 +89,11 @@ public class ConfiguracaoController implements Initializable {
     @FXML
     private void on_salvarunidade(ActionEvent event) throws IOException {
         if (!t_base.getText().equals("")) {
-            //ConfiguracaoDao dao = new ConfiguracaoDao();
             Unidade unidade2 = new Unidade();
             unidade2.setNomeUnidade(t_base.getText());
             dao.salvar(unidade2);
             System.out.println("Salvo!");
         } else {
-            //JOptionPane.showMessageDialog(null, "Favor preencher as informações!", "Bibliouro", JOptionPane.INFORMATION_MESSAGE);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Mensagem.fxml"));
             Stage stage = new Stage(StageStyle.DECORATED);
             stage.setScene(new Scene(loader.load()));
@@ -155,7 +148,6 @@ public class ConfiguracaoController implements Initializable {
             dao.salvar(tipo);
             System.out.println("Salvo!");
         } else {
-            //JOptionPane.showMessageDialog(null, "Favor preencher as informações!", "Bibliouro", JOptionPane.INFORMATION_MESSAGE);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Mensagem.fxml"));
             Stage stage = new Stage(StageStyle.DECORATED);
             stage.setScene(new Scene(loader.load()));

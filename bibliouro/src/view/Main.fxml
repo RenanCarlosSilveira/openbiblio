@@ -124,10 +124,12 @@
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                       </rowConstraints>
                                        <children>
-                                          <Button fx:id="b_acervo" maxHeight="58.0" maxWidth="400.0" minHeight="58.0" minWidth="400.0" mnemonicParsing="false" onAction="#open_viewacervo" prefHeight="58.0" prefWidth="400.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #996900, #ffab1a);" text="Acervo                                                       &gt;" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+                                          <Button fx:id="b_acervo" maxHeight="58.0" maxWidth="400.0" minHeight="58.0" minWidth="400.0" mnemonicParsing="false" onAction="#open_viewacervo" prefHeight="58.0" prefWidth="400.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #996900, #ffab1a);" text="Acervo                                                       " textAlignment="CENTER" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowSpan="2" GridPane.valignment="CENTER">
                                              <GridPane.margin>
                                                 <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                                              </GridPane.margin>
@@ -138,7 +140,7 @@
                                                 <Font name="System Bold" size="20.0" />
                                              </font>
                                           </Button>
-                                          <Button fx:id="b_autor" maxHeight="58.0" maxWidth="400.0" minHeight="58.0" minWidth="400.0" mnemonicParsing="false" onAction="#open_viewautor" prefHeight="58.0" prefWidth="400.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #996900, #ffab1a);" text="Autor                                                         &gt;" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                          <Button fx:id="b_autor" maxHeight="58.0" maxWidth="400.0" minHeight="58.0" minWidth="400.0" mnemonicParsing="false" onAction="#open_viewautor" prefHeight="58.0" prefWidth="400.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #996900, #ffab1a);" text="Autor                                                         " textAlignment="CENTER" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.rowSpan="2" GridPane.valignment="CENTER">
                                              <GridPane.margin>
                                                 <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                                              </GridPane.margin>
@@ -149,7 +151,7 @@
                                                 <Font name="System Bold" size="20.0" />
                                              </font>
                                           </Button>
-                                          <Button fx:id="b_exemplar" maxHeight="58.0" maxWidth="400.0" minHeight="58.0" minWidth="400.0" mnemonicParsing="false" onAction="#open_viewexemplar" prefHeight="58.0" prefWidth="400.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #996900, #ffab1a);" text="Exemplar                                                   &gt;" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                          <Button fx:id="b_exemplar" maxHeight="58.0" maxWidth="400.0" minHeight="58.0" minWidth="400.0" mnemonicParsing="false" onAction="#open_viewexemplar" prefHeight="58.0" prefWidth="400.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #996900, #ffab1a);" text="Exemplar                                                   " textAlignment="CENTER" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.rowSpan="2" GridPane.valignment="CENTER">
                                              <GridPane.margin>
                                                 <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                                              </GridPane.margin>
@@ -160,7 +162,7 @@
                                                 <Font name="System Bold" size="20.0" />
                                              </font>
                                           </Button>
-                                          <Button fx:id="b_pessoa" maxHeight="58.0" maxWidth="400.0" minHeight="58.0" minWidth="400.0" mnemonicParsing="false" onAction="#open_viewpessoa" prefHeight="58.0" prefWidth="400.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #996900, #ffab1a);" text="Pessoa                                                       &gt;" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                                          <Button fx:id="b_pessoa" maxHeight="58.0" maxWidth="400.0" minHeight="58.0" minWidth="400.0" mnemonicParsing="false" onAction="#open_viewpessoa" prefHeight="58.0" prefWidth="400.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #996900, #ffab1a);" text="Pessoa                                                       " textAlignment="CENTER" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="8" GridPane.rowSpan="2" GridPane.valignment="CENTER">
                                              <GridPane.margin>
                                                 <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                                              </GridPane.margin>
@@ -171,7 +173,7 @@
                                                 <Font name="System Bold" size="20.0" />
                                              </font>
                                           </Button>
-                                          <Button fx:id="b_local" maxHeight="58.0" maxWidth="400.0" minHeight="58.0" minWidth="400.0" mnemonicParsing="false" onAction="#open_viewlocal" prefHeight="58.0" prefWidth="400.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #996900, #ffab1a);" text="Local                                                          &gt;" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                                          <Button fx:id="b_local" maxHeight="58.0" maxWidth="400.0" minHeight="58.0" minWidth="400.0" mnemonicParsing="false" onAction="#open_viewlocal" prefHeight="58.0" prefWidth="400.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #996900, #ffab1a);" text="Local                                                          " textAlignment="CENTER" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.rowSpan="2" GridPane.valignment="CENTER">
                                              <GridPane.margin>
                                                 <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                                              </GridPane.margin>
@@ -193,7 +195,7 @@
                                  <children>
                                     <GridPane maxHeight="480.0" maxWidth="408.0" minHeight="480.0" minWidth="408.0" prefHeight="480.0" prefWidth="408.0">
                                        <children>
-                                          <Button fx:id="b_devolucao" maxHeight="58.0" maxWidth="400.0" minHeight="58.0" minWidth="400.0" mnemonicParsing="false" onAction="#open_viewdevolucao" prefHeight="58.0" prefWidth="400.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #996900, #ffab1a);" text="Devolução                                                &gt;" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+                                          <Button fx:id="b_devolucao" maxHeight="58.0" maxWidth="400.0" minHeight="58.0" minWidth="400.0" mnemonicParsing="false" onAction="#open_viewdevolucao" prefHeight="58.0" prefWidth="400.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #996900, #ffab1a);" text="Devolução                                                " textAlignment="CENTER" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowSpan="2" GridPane.valignment="CENTER">
                                              <font>
                                                 <Font name="System Bold" size="20.0" />
                                              </font>
@@ -204,7 +206,7 @@
                                                 <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                                              </GridPane.margin>
                                           </Button>
-                                          <Button fx:id="b_notificacao" maxHeight="58.0" maxWidth="400.0" minHeight="58.0" minWidth="400.0" mnemonicParsing="false" onAction="#open_viewnotificacao" prefHeight="58.0" prefWidth="400.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #996900, #ffab1a);" text="Notificação                                              &gt;" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                          <Button fx:id="b_notificacao" maxHeight="58.0" maxWidth="400.0" minHeight="58.0" minWidth="400.0" mnemonicParsing="false" onAction="#open_viewnotificacao" prefHeight="58.0" prefWidth="400.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #996900, #ffab1a);" text="Notificação                                              " textAlignment="CENTER" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.rowSpan="2" GridPane.valignment="CENTER">
                                              <font>
                                                 <Font name="System Bold" size="20.0" />
                                              </font>
@@ -215,7 +217,7 @@
                                                 <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                                              </GridPane.margin>
                                           </Button>
-                                          <Button fx:id="b_reserva" maxHeight="58.0" maxWidth="400.0" minHeight="58.0" minWidth="400.0" mnemonicParsing="false" onAction="#open_viewreserva" prefHeight="58.0" prefWidth="400.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #996900, #ffab1a);" text="Retirada                                                   &gt;" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                          <Button fx:id="b_reserva" maxHeight="58.0" maxWidth="400.0" minHeight="58.0" minWidth="400.0" mnemonicParsing="false" onAction="#open_viewreserva" prefHeight="58.0" prefWidth="400.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #996900, #ffab1a);" text="Retirada                                                   " textAlignment="CENTER" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.rowSpan="2" GridPane.valignment="CENTER">
                                              <font>
                                                 <Font name="System Bold" size="20.0" />
                                              </font>
@@ -239,6 +241,7 @@
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                     </GridPane>
                                  </children></AnchorPane>
@@ -250,7 +253,7 @@
                                  <children>
                                     <GridPane maxHeight="480.0" maxWidth="408.0" minHeight="480.0" minWidth="408.0" prefHeight="480.0" prefWidth="408.0">
                                        <children>
-                                          <Button fx:id="b_exemplarporacervo" maxHeight="58.0" maxWidth="400.0" minHeight="58.0" minWidth="400.0" mnemonicParsing="false" onAction="#open_viewexemplarporacervo" prefHeight="58.0" prefWidth="400.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #996900, #ffab1a);" text="Exemplar por Acervo                              &gt;" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+                                          <Button fx:id="b_exemplarporacervo" maxHeight="58.0" maxWidth="400.0" minHeight="58.0" minWidth="400.0" mnemonicParsing="false" onAction="#open_viewexemplarporacervo" prefHeight="58.0" prefWidth="400.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #996900, #ffab1a);" text="Exemplar por Acervo                              " textAlignment="CENTER" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowSpan="2" GridPane.valignment="CENTER">
                                              <font>
                                                 <Font name="System Bold" size="20.0" />
                                              </font>
@@ -261,7 +264,7 @@
                                                 <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                                              </GridPane.margin>
                                           </Button>
-                                          <Button fx:id="b_reservaspendentes" maxHeight="58.0" maxWidth="400.0" minHeight="58.0" minWidth="400.0" mnemonicParsing="false" onAction="#open_viewreservaspendentes" prefHeight="58.0" prefWidth="400.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #996900, #ffab1a);" text="Reservas Pendentes                                &gt;" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                          <Button fx:id="b_reservaspendentes" maxHeight="58.0" maxWidth="400.0" minHeight="58.0" minWidth="400.0" mnemonicParsing="false" onAction="#open_viewreservaspendentes" prefHeight="58.0" prefWidth="400.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #996900, #ffab1a);" text="Reservas Pendentes                                " textAlignment="CENTER" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.rowSpan="2" GridPane.valignment="CENTER">
                                              <font>
                                                 <Font name="System Bold" size="20.0" />
                                              </font>
@@ -278,6 +281,7 @@
                                           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                        </columnConstraints>
                                        <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
