@@ -3,6 +3,8 @@ package controller;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -19,6 +22,7 @@ import javafx.stage.StageStyle;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
+import model.Emprestimo;
 import model.Unidade;
 
 public class MainController implements Initializable {
@@ -57,10 +61,13 @@ public class MainController implements Initializable {
     private ImageView b_enviar;
     @FXML
     private ImageView b_atualizar;
+    @FXML
+    private ListView<Emprestimo> list_devolucoes;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         busca_unidade();
+        on_buscar();
     }
 
     void busca_unidade() {
@@ -73,6 +80,20 @@ public class MainController implements Initializable {
             l_base.setText("NÃO DEFINIDO!");
             System.out.println(e);
         }
+    }
+
+    private void on_buscar() {
+        ObservableList<Emprestimo> emprestimos = FXCollections.observableArrayList();
+        emprestimos.clear();
+        list_devolucoes.setItems(null);
+        EmprestimoDao dao2 = new EmprestimoDao();
+        for (Emprestimo c : dao2.getEmprestimosAtrasados()) {
+            emprestimos.addAll(c);
+            list_devolucoes.setItems(emprestimos);
+        }
+        /*while (!list_devolucoes.getItems().equals(null)) {
+
+        }*/
     }
 
     @FXML
@@ -219,6 +240,8 @@ public class MainController implements Initializable {
 
     @FXML
     private void on_atualizardevolucao(MouseEvent event) {
+        on_buscar();
+        System.out.println("Atualizada lista de atrasados");
     }
 
 }

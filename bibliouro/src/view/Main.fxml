@@ -35,7 +35,7 @@
                   <Pane maxHeight="512.0" maxWidth="408.0" minHeight="512.0" minWidth="408.0" prefHeight="512.0" prefWidth="408.0" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowSpan="4">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dddbdb" height="31.0" layoutY="481.0" stroke="TRANSPARENT" strokeType="INSIDE" width="408.0" />
-                        <ListView layoutX="9.0" layoutY="56.0" prefHeight="350.0" prefWidth="388.0" stylesheets="@../util/styles.css" />
+                        <ListView fx:id="list_devolucoes" layoutX="9.0" layoutY="56.0" prefHeight="350.0" prefWidth="388.0" stylesheets="@../util/styles.css" />
                         <Text fill="#ffb200" layoutX="9.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Devoluções Atrasadas">
                            <font>
                               <Font name="System Bold" size="20.0" />

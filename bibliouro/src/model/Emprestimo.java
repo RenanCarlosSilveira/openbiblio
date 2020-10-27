@@ -105,6 +105,6 @@ public class Emprestimo {
 
     @Override
     public String toString() {
-        return "Emprestimo{" + "idEmprestimo=" + idEmprestimo + ", dataretirada=" + dataretirada + ", datadevolucao=" + datadevolucao + ", datadevolvido=" + datadevolvido + ", idExemplar=" + idExemplar + ", idPessoa=" + idPessoa + '}';
+        return  "Pessoa: "+ idPessoa.getNome() + "\nRetirada: " +dataretirada + " - Prevista: " + datadevolucao;
     }
 }

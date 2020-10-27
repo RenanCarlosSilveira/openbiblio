@@ -47,7 +47,7 @@ public class EmprestimoController implements Initializable {
     Acervo acervoglobal = new Acervo();
     //AcervoDao dao = new AcervoDao();
     AutorDao daoautor = new AutorDao();
-    
+
     EmprestimoDao dao = new EmprestimoDao();
 
     ExemplarDao daoexemplar = new ExemplarDao();
@@ -79,8 +79,6 @@ public class EmprestimoController implements Initializable {
     @FXML
     private ImageView b_editar;
     @FXML
-    private ListView<Emprestimo> list_emprestimos;
-    @FXML
     private Text l_exception;
     @FXML
     private ListView<Exemplar> list_exemplares_selecionar;
@@ -108,6 +106,8 @@ public class EmprestimoController implements Initializable {
     private DatePicker d_devolução;
     @FXML
     private DatePicker d_devolvido;
+    @FXML
+    private ListView<Emprestimo> list_emprest;
 
     /**
      * Initializes the controller class.
@@ -122,16 +122,19 @@ public class EmprestimoController implements Initializable {
     private void on_buscar(MouseEvent event) {
         ObservableList<Emprestimo> emprestimos = FXCollections.observableArrayList();
         emprestimos.clear();
-        //list_emprestimos.setItems(null);
+        list_emprest.setItems(null);
         for (Emprestimo c : dao.getEmprestimosPessoa(t_consulta.getText())) {
-            emprestimos.add(c);
-            System.out.println(emprestimos);
-            list_emprestimos.setItems(emprestimos);
+            emprestimos.addAll(c);
+            list_emprest.setItems(emprestimos);
+        }
+        while (!list_emprest.getItems().equals(null)) {
+            
         }
     }
 
     @FXML
-    private void closeview(MouseEvent event) {
+    private void closeview(MouseEvent event
+    ) {
         Stage stage = (Stage) b_back.getScene().getWindow();
         this.dao.closedb();
         this.acervoglobal = null;
@@ -385,19 +388,22 @@ public class EmprestimoController implements Initializable {
     }
 
     @FXML
-    private void on_remove_exemplares(MouseEvent event) {
+    private void on_remove_exemplares(MouseEvent event
+    ) {
         this.exemplaresselecionados.remove(this.list_exemplares_selecionados.getSelectionModel().getSelectedItem());
         this.list_exemplares_selecionados.setItems(this.exemplaresselecionados);
     }
 
     @FXML
-    private void on_seleciona_pessoa(MouseEvent event) {
+    private void on_seleciona_pessoa(MouseEvent event
+    ) {
         this.pessoaselecionada.add(this.list_pessoas_selecionar.getSelectionModel().getSelectedItem());
         this.list_pessoa_selecionada.setItems(this.pessoaselecionada);
     }
 
     @FXML
-    private void on_remove_pessoa(MouseEvent event) {
+    private void on_remove_pessoa(MouseEvent event
+    ) {
         this.pessoaselecionada.remove(this.list_pessoa_selecionada.getSelectionModel().getSelectedItem());
         this.list_pessoa_selecionada.setItems(this.pessoaselecionada);
     }
