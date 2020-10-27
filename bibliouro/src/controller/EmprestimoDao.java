@@ -60,6 +60,17 @@ class EmprestimoDao {
         }
     }
 
+    public void remover(Object objeto) {
+        try {
+            this.getManager().getTransaction().begin();
+            this.getManager().remove(objeto);
+            this.getManager().getTransaction().commit();
+//          this.getManager().close();
+        } catch (Exception e) {
+            System.out.println("Nao foi possivel remover: " + e);
+        }
+    }
+
     /*public List<Emprestimo> findComment(String nome) {
 
         CriteriaBuilder builder = this.getManager().getCriteriaBuilder();
@@ -91,6 +102,7 @@ class EmprestimoDao {
         Root<Emprestimo> cont = criteriaQuery.from(Emprestimo.class);
         criteriaQuery.select(cont);
         Predicate predicate = criteriaBuilder.lessThan(cont.<Date>get("datadevolucao"), Date.from(Instant.now()));
+                //.and(criteriaBuilder.equal(cont.<Date>get("datadevolucao"), null));
         criteriaQuery.where(predicate);
         criteriaQuery.distinct(true);
         criteriaQuery.orderBy(criteriaBuilder.desc(cont.<Date>get("datadevolucao")));

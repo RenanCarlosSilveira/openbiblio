@@ -67,7 +67,7 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         busca_unidade();
-        on_buscar();
+        on_buscar_emprestimos();
     }
 
     void busca_unidade() {
@@ -82,7 +82,7 @@ public class MainController implements Initializable {
         }
     }
 
-    private void on_buscar() {
+    private void on_buscar_emprestimos() {
         ObservableList<Emprestimo> emprestimos = FXCollections.observableArrayList();
         emprestimos.clear();
         list_devolucoes.setItems(null);
@@ -240,7 +240,7 @@ public class MainController implements Initializable {
 
     @FXML
     private void on_atualizardevolucao(MouseEvent event) {
-        on_buscar();
+        on_buscar_emprestimos();
         System.out.println("Atualizada lista de atrasados");
     }
 

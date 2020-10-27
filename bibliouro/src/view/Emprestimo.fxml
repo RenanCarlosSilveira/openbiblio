@@ -97,7 +97,7 @@
                                                         <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                                                     </GridPane.margin>
                                                 </Text>
-                                                <TextField fx:id="t_busca_exemplares" onKeyTyped="#on_lista_exemplares" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                                <TextField fx:id="t_busca_exemplares" editable="false" onKeyTyped="#on_lista_exemplares" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                                     <GridPane.margin>
                                                         <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                                                     </GridPane.margin>
@@ -149,7 +149,7 @@
                                           <Image url="@../util/esquerda.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField fx:id="t_busca_pessoas" onKeyTyped="#on_lista_pessoas" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                    <TextField fx:id="t_busca_pessoas" editable="false" onKeyTyped="#on_lista_pessoas" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -189,12 +189,12 @@
                                           <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                                        </GridPane.margin>
                                     </Text>
-                                    <DatePicker fx:id="d_retirada" maxHeight="40.0" minHeight="40.0" prefHeight="40.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <DatePicker fx:id="d_retirada" editable="false" maxHeight="40.0" minHeight="40.0" prefHeight="40.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                        <GridPane.margin>
                                           <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                                        </GridPane.margin>
                                     </DatePicker>
-                                    <DatePicker fx:id="d_devolução" maxHeight="40.0" minHeight="40.0" prefHeight="40.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                    <DatePicker fx:id="d_devolucao" editable="false" maxHeight="40.0" minHeight="40.0" prefHeight="40.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
                                        <GridPane.margin>
                                           <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                                        </GridPane.margin>

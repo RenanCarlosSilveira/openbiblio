@@ -13,9 +13,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -38,10 +41,13 @@ public class Emprestimo {
     private Date datadevolucao;
     @Temporal(TemporalType.DATE)
     private Date datadevolvido;
-    @OneToMany(targetEntity = Exemplar.class, cascade = CascadeType.MERGE)
+    @OneToMany(targetEntity = Exemplar.class/*, cascade = CascadeType.ALL*/)
     private List<Exemplar> idExemplar;
-    @OneToOne(targetEntity = Pessoa.class, cascade = CascadeType.MERGE)
+    @ManyToOne(targetEntity = Pessoa.class/*, cascade = CascadeType.ALL*/)
+    @JoinColumn(/*unique = false*/name="idPessoa", referencedColumnName = "idPessoa")
+    @OrderBy("datadevolucao ASC")
     private Pessoa idPessoa;
+    
 
     public Emprestimo() {
     }
