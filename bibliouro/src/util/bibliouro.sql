@@ -163,3 +163,16 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+-- TRIGGERS --
+
+DELIMITER $ 
+CREATE TRIGGER Tgr_Insert_Emprest_Exemp
+AFTER INSERT ON emprestimo_exemplar FOR EACH ROW
+BEGIN 
+UPDATE exemplar
+SET quantdisponivel = quantdisponivel - 1
+WHERE exemplar.idExemplar = idExemplar; 
+END$ 
+DELIMITER;

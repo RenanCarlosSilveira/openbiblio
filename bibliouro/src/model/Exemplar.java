@@ -5,6 +5,7 @@
  */
 package model;
 
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -35,6 +37,8 @@ public class Exemplar {
     private int quantdisponivel;
     @Column(name = "quantlocado")
     private int quantlocado;
+    @ManyToMany(mappedBy = "idExemplar")
+    List<Emprestimo> idEmprestimo;
 
     public Exemplar() {
     }
@@ -89,7 +93,7 @@ public class Exemplar {
 
     @Override
     public String toString() {
-        return "▒ " + etiqueta + " ▒\n" + idAcervo.getNome() + "\n"+ "Disponível: " + quantdisponivel + " - Locado: " + quantlocado;
+        return "▒ " + etiqueta + " ▒\n" + idAcervo.getNome() + "\n" + "Disponível: " + quantdisponivel + " - Locado: " + quantlocado;
     }
-    
+
 }

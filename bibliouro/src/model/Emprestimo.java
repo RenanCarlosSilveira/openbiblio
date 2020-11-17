@@ -14,6 +14,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import javax.persistence.OneToMany;
@@ -41,8 +43,11 @@ public class Emprestimo {
     private Date datadevolucao;
     @Temporal(TemporalType.DATE)
     private Date datadevolvido;
-    @OneToMany(targetEntity = Exemplar.class/*, cascade = CascadeType.ALL*/)
-    private List<Exemplar> idExemplar;
+   // @ManyToMany(targetEntity = Exemplar.class/*, cascade = CascadeType.ALL*/)
+   // private List<Exemplar> idExemplar;
+    @ManyToMany
+    @JoinTable(name = "emprestimo_exemplar", joinColumns = {@JoinColumn(name = "idEmprestimo")}, inverseJoinColumns = {@JoinColumn(name = "idExemplar")})
+    List<Exemplar> idExemplar;
     @ManyToOne(targetEntity = Pessoa.class/*, cascade = CascadeType.ALL*/)
     @JoinColumn(/*unique = false*/name="idPessoa", referencedColumnName = "idPessoa")
     @OrderBy("datadevolucao ASC")
@@ -109,8 +114,9 @@ public class Emprestimo {
         this.idPessoa = idPessoa;
     }
 
+
     @Override
     public String toString() {
-        return  "Pessoa: "+ idPessoa.getNome() + "\nRetirada: " +dataretirada + " - Prevista: " + datadevolucao;
+        return  "Pessoa: "+ idPessoa.getNome() + "\nRetirada: " + dataretirada + " - Prevista: " + datadevolucao; ////
     }
 }

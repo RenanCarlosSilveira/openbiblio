@@ -8,6 +8,7 @@ package controller;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -53,6 +54,7 @@ public class EmprestimoController implements Initializable {
     ObservableList<Pessoa> pessoaselecionada = FXCollections.observableArrayList();
     PessoaDao daopessoa = new PessoaDao();
 
+    ObservableList<Exemplar> exemplaresglobais = FXCollections.observableArrayList();
     ObservableList<Exemplar> exemplares = FXCollections.observableArrayList();
     ObservableList<Exemplar> exemplaresselecionados = FXCollections.observableArrayList();
     ExemplarDao daoexemplar = new ExemplarDao();
@@ -149,42 +151,23 @@ public class EmprestimoController implements Initializable {
                 stage.initStyle(StageStyle.UNDECORATED);
                 stage.show();
             } else {
-                //Emprestimo emprestimo = new Emprestimo();
-                //EmprestimoDao dao = new EmprestimoDao();
-                this.emprestimoglobal.setDatadevolucao(Date.valueOf(d_devolucao.getValue()));
-                this.emprestimoglobal.setDataretirada(Date.valueOf(d_retirada.getValue()));
-                this.emprestimoglobal.setIdExemplar(this.list_exemplares_selecionados.getItems());
-                this.emprestimoglobal.setIdPessoa(pessoaglobal);
-                this.dao.salvar(emprestimoglobal);
+                Emprestimo emprestimo = new Emprestimo();
+                EmprestimoDao dao2 = new EmprestimoDao();
+                emprestimo.setDatadevolucao(Date.valueOf(d_devolucao.getValue()));
+                emprestimo.setDataretirada(Date.valueOf(d_retirada.getValue()));
+                emprestimo.setIdExemplar(this.list_exemplares_selecionados.getItems());
+                emprestimo.setIdPessoa(pessoaglobal);
+                dao2.salvar(emprestimo);
                 System.out.println("SAVE");
             }
         } else {
-            /*if ((t_nomeacervo.getText().equals(null) || t_nomeacervo.getText().equals(""))
-                    || t_chamada.getText().equals(null) || t_chamada.getText().equals("")
-                    || t_exemplares.getText().equals(null) || t_exemplares.getText().equals("")
-                    //|| c_status.getSelectionModel().getSelectedItem().toString().equals(null) || c_status.getSelectionModel().getSelectedItem().toString().equals("")
-                    || autoresselecionados.isEmpty()) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Mensagem.fxml"));
-                Stage stage = new Stage(StageStyle.DECORATED);
-                stage.setScene(new Scene(loader.load()));
-                MensagemController controller = loader.getController();
-                controller.initData("Preencha as informações obrigatorias (Nome, Chamada, Exemplares, Autores, Status)", "A");
-                stage.initStyle(StageStyle.UNDECORATED);
-                stage.show();
-            } else {
-                acervoglobal.setNome(t_nomeacervo.getText());
-                acervoglobal.setAno(Integer.valueOf(t_ano.getText()));
-                acervoglobal.setChamada(t_chamada.getText());
-                acervoglobal.setEdicao(Integer.valueOf(t_edicao.getText()));
-                acervoglobal.setTotalexemplares(Integer.valueOf(t_exemplares.getText()));
-                acervoglobal.setStatus(c_status.getValue());
-                acervoglobal.setIdTipoAcervo(c_tipo.getValue());
-                acervoglobal.setIdPrateleira(c_local.getValue());
-                acervoglobal.setIdAutor(this.autoresselecionados);
-                dao.salvar(acervoglobal);
-                System.out.println("UPDT");
-            }*/
-            System.out.println("FALHOOOOOOU!");
+            this.emprestimoglobal.setDatadevolucao(Date.valueOf(d_devolucao.getValue()));
+            this.emprestimoglobal.setDataretirada(Date.valueOf(d_retirada.getValue()));
+            this.exemplaresglobais.addAll(this.list_exemplares_selecionados.getItems());
+            this.emprestimoglobal.setIdExemplar(this.list_exemplares_selecionados.getItems());
+            this.emprestimoglobal.setIdPessoa(pessoaglobal);
+            dao.salvar(emprestimoglobal);
+            System.out.println("UPDT");
         }
         d_devolucao.setEditable(false);
         d_retirada.setEditable(false);
@@ -281,24 +264,22 @@ public class EmprestimoController implements Initializable {
     private void on_editar(MouseEvent event
     ) throws IOException {
         if (list_emprest.getSelectionModel().getSelectedItem() != null) {
-            /*acervoglobal = list_acervos.getSelectionModel().getSelectedItem();
-            System.out.println(acervoglobal);
-            this.t_id.setText(String.valueOf(acervoglobal.getIdAcervo()));
-            /*this.t_nomeacervo.setText(acervoglobal.getNome());
-            this.t_chamada.setText(acervoglobal.getChamada());
-            this.t_exemplares.setText(String.valueOf(acervoglobal.getTotalexemplares()));
-            this.t_edicao.setText(String.valueOf(acervoglobal.getEdicao()));
-            this.t_ano.setText(String.valueOf(acervoglobal.getAno()));
-            this.c_status.getSelectionModel().select(acervoglobal.getStatus());
-            this.c_tipo.getSelectionModel().select(acervoglobal.getIdTipoAcervo());
-            this.c_local.getSelectionModel().select(acervoglobal.getIdPrateleira());
-            this.autoresselecionados.clear();
-            this.autoresselecionados.addAll(this.acervoglobal.getIdAutor());
-            this.list_autores_selecionados.setItems(this.autoresselecionados);
-            b_rmv.setVisible(true);
-            b_save.setVisible(true);
-            b_add.setVisible(false);
-            list_acervos.setItems(null);*/
+            this.emprestimoglobal = list_emprest.getSelectionModel().getSelectedItem();
+            this.t_id.setText(String.valueOf(emprestimoglobal.getIdEmprestimo()));
+            LocalDate localDate = Date.valueOf(String.valueOf(emprestimoglobal.getDatadevolucao())).toLocalDate().plusDays(1); //+1 é gambiarra, ver futuramente como tratar, pois esta trazendo certo do banco, mas mostrando incorreto no componente com -1 dia
+            this.d_devolucao.setValue(localDate);
+            LocalDate localDate2 = Date.valueOf(String.valueOf(emprestimoglobal.getDataretirada())).toLocalDate().plusDays(1); //+1 é gambiarra, ver futuramente como tratar, pois esta trazendo certo do banco, mas mostrando incorreto no componente com -1 dia
+            this.d_retirada.setValue(localDate2);
+            //if (!emprestimoglobal.getDatadevolvido().equals(null) || !emprestimoglobal.getDatadevolvido().equals("")) {
+//                LocalDate localDate3 = Date.valueOf(String.valueOf(emprestimoglobal.getDatadevolvido())).toLocalDate().plusDays(1); //+1 é gambiarra, ver futuramente como tratar, pois esta trazendo certo do banco, mas mostrando incorreto no componente com -1 dia
+//                this.d_devolvido.setValue(localDate3);
+            //}
+            this.pessoaselecionada.clear();
+            this.pessoaselecionada.addAll(this.emprestimoglobal.getIdPessoa());
+            this.list_pessoa_selecionada.setItems(pessoaselecionada);
+            this.exemplaresselecionados.clear();
+            this.exemplaresselecionados.addAll(this.emprestimoglobal.getIdExemplar());
+            this.list_exemplares_selecionados.setItems(exemplaresselecionados);
         } else {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Mensagem.fxml"));
             Stage stage = new Stage(StageStyle.DECORATED);
@@ -309,10 +290,11 @@ public class EmprestimoController implements Initializable {
             stage.show();
         }
         d_devolucao.setEditable(true);
-        d_retirada.setEditable(true);
+        d_retirada.setEditable(false);
+        d_retirada.setDisable(true);
         d_devolvido.setEditable(false);
-        t_busca_exemplares.setEditable(true);
-        t_busca_pessoas.setEditable(true);
+        t_busca_exemplares.setEditable(false);
+        t_busca_pessoas.setEditable(false);
         //b_rmv.setVisible(true);
         b_save.setVisible(true);
         b_add.setVisible(false);
@@ -384,6 +366,7 @@ public class EmprestimoController implements Initializable {
 
     @FXML
     private void on_seleciona_pessoa(MouseEvent event) {
+        pessoaselecionada.clear();
         this.pessoaselecionada.add(this.list_pessoas_selecionar.getSelectionModel().getSelectedItem());
         this.list_pessoa_selecionada.setItems(this.pessoaselecionada);
         this.pessoaglobal = list_pessoa_selecionada.getItems().get(0);
